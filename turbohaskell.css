@@ -4,9 +4,15 @@ body {
 
 .container {
 	max-width: 800px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 24px;
+	margin-right: 24px;
+}
 
+@media (min-width: 800px) {
+	.container {
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 nav {
@@ -42,24 +48,112 @@ nav span {
 
 ul { list-style: none; padding-left: 0; }
 
-li {
-	margin-bottom: 1.5rem;
-	color: hsla(192, 81%, 14%, 85%);
-	border-left: 3px solid #657b83;
-	border-radius: 3px;
-	padding-left: 1rem;	
-}
-
-li strong {
-	color: #073642;
-	display: block;
-	margin-bottom: 0.5rem;
-	font-weight: 700 !important;
-}
-
 footer a {
 	color: hsla(196, 13%, 80%, 1);
 	font-weight: bold;
 	text-decoration: none;
-	margin-right: 1rem;
+	margin-right: 4px;
+	font-size: 9px;
+}
+
+footer a:last-child {
+	margin-left: 16px;
+}
+
+@media (min-width: 860px) {
+	footer a {
+		margin-right: 1rem;
+		font-size: 1rem;
+	}
+
+	footer a:last-child {
+		float: right;
+	}
+}
+
+* {
+	-webkit-font-smoothing: antialiased;
+}
+
+.features {
+	font-size: 1.25rem;
+}
+
+.features li {
+	margin-bottom: 3rem;
+	color: hsla(192, 81%, 14%, 85%);
+	border-left: 0;
+	border-radius: 3px;
+}
+
+
+
+.features li strong {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-weight: 700 !important;
+	font-size: 2rem;
+}
+
+.features li strong, h5 {
+	color: #073642;
+}
+
+.stay-in-the-loop h5 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.stay-in-the-loop {
+	font-size: 18px;
+}
+
+.companies {
+	margin-bottom: 10rem;
+}
+
+.companies h5 {
+	font-size: 2rem;
+}
+
+.bg-dark {
+	background-color: #073642;
+}
+
+
+.companies .logos {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+	.companies .logos img {
+		width: 40% !important;
+		height: auto !important;
+		margin-bottom: 2rem;
+	}
+
+	.companies .logos a {
+		display: block;
+		text-align: center;
+		width: 100%;
+	}
+}
+
+.intro-text {
+	font-size: 1.5rem;
+	max-width: 680px;
+	color: rgb(33, 37, 41);
+	line-height: 1.3;
+	color: hsla(192, 81%, 14%, 85%);
+	font-weight: 500;
+}
+
+@media (min-width: 860px) {
+	.intro-text {
+		font-size: 1.9rem;
+		line-height: 1.4;
+	}
 }
