@@ -159,5 +159,32 @@ footer a:last-child {
 
 	#demo-video {
 		height: 600px !important;
-	}
+    }
+
+    .quote-container {
+        flex-wrap: nowrap !important;
+    }
+}
+
+.quote {
+    border-radius: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    max-width: 100%;
+    margin: 0.5rem;
+}
+
+.quote-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.quote-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.quote-link {
+    margin: 1rem;
 }
