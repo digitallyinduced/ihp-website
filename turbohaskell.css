@@ -188,3 +188,8 @@ footer a:last-child {
 .quote-link {
     margin: 1rem;
 }
+
+.embedded-parent {
+	display: flex;
+	justify-content: center;
+}
