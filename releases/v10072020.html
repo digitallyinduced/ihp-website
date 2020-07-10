@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta property="og:locale" content="en_EN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="IHP: Beta Release 10.07.2020" />
+        <meta property="og:description" content="IHP is a modern batteries-included Web Framework, built on top of Haskell and Nix." />
+        <meta property="og:url" content="https://ihp.digitallyinduced.com/" />
+        <meta property="og:site_name" content="IHP: Integrated Haskell Platform" />
+        <meta name="author" content="digitally induced GmbH">
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content="IHP is a modern batteries-included Web Framework, built on top of Haskell and Nix." />
+        <meta name="twitter:title" content="IHP: Integrated Haskell Platform" />
+        <meta name="twitter:site" content="@digitallyinduce" />
+        <meta property="og:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="og:image:secure_url" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="twitter:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="og:image:width" content="1500" />
+        <meta property="og:image:height" content="1500" />
+
+        <title>IHP: Beta Release 10.07.2020</title>
+
+        <link rel="shortcut icon" type="image/x-icon" href="/ihp-logo.svg"/>
+
+        <link rel="stylesheet" href="../normalize.css"/>
+        <link rel="stylesheet" href="../turbohaskell.css"/>
+    </head>
+  <body>
+
+
+
+    <div style="background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
+        <div class="container">
+            <h1 style="margin-bottom: 2rem; font-size: 2rem; font-weight: 300; border-bottom: 1px solid white; padding-bottom: 0.25rem; border-color: hsla(196, 13%, 60%, 1)">λ IHP: Integrated Haskell Platform</h1>
+
+            <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">Beta 10.07.2020</h1>
+            <p style="margin-top: 1rem; font-size: 1.75rem; font-weight: 600; color:hsla(196, 13%, 80%, 1)">Release Notes</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="margin-bottom: 5rem">
+            <div class="intro-text">
+                <p>Two weeks ago we've released IHP 🎉. We're really happy about the feedback we've received so far. It's also great to see the IHP Community growing strong: 40.000 unique page views, nearly 500 stars on GitHub, 3.000 views on the youtube channel, over 600 new projects already created with IHP.</p>
+
+                <p>
+                    Thanks to everyone who made IHP better by contributing, giving feedback, or sharing it on social media :)
+                </p>
+                <p>
+                    Now it's already time for the next version: v10072020. Since the last release we have merged 180 commits by 13 contributors. You can find the major changes below. The complete changelog and the update guide <a href="https://github.com/digitallyinduced/ihp/releases/tag/v10072020" target="_blank">can be found on GitHub</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="container">
+        <div>
+
+
+
+            <ul class="features">
+                <li>
+                    <strong>IHP is Web-scale now</strong>
+
+                    Support for <b>marquee</b> and <b>blink</b> tags have been added to HSX (previously HSX reported an error as these tags weren't on the tag whitelist) 🚀
+                </li>
+
+                <li>
+                    <strong>Code Generator Updates</strong>
+
+                    <p>You can now generate views from the code generator. Previously views could only be generated via the controller code generator or by manually adding them.</p>
+
+                    <p>Apps like Web or Admin can now be generated via the web dev tooling. Previously this was only possible from the terminal using <q>new-application</q>.</p>
+
+                    <p>The action generator now has a checkbox to also generate a view for the action.</p>
+                </li>
+
+                <li>
+                    <strong>Auth Updates</strong>
+
+                    The IHP authentication functions have been fixed and improved to be easier to get started with. There's certainly a lot more to do to make auth easier :-)
+                </li>
+
+                <li>
+                    <strong>More SQL Types Supported</strong>
+
+                    Using <q>REAL</q> and <q>DATE</q> previously crashed the code generator. This has been fixed now. <q>BIGINT</q>, <q>TIMESTAMP WITHOUT TIME ZONE</q>, <q>VARCHAR</q>, and <q>NUMERIC</q> are supported now. The Schema.sql parser now also knows about certain aliases (e.g. Int and Integer are the same in postgres).
+                </li>
+
+                <li>
+                    <strong>Improved Dev Server on Linux</strong>
+
+                    <p>The dev server is now faster and more stable on linux by not using the <q>-fexternal-interpreter</q> flag of ghci. This also fixed a major bug causing the use of sessions to fail in linux development mode.</p>
+
+                </li>
+
+                <li>
+                    <strong>The Dev Server Now Displays All Apps Available in Your Project</strong>
+
+                    Previously only the Web application was available. When you have other apps like e.g. Admin or Api, they will also be shown in the sidebar.
+
+                </li>
+            </ul>
+
+
+        </div>
+
+
+        <p style="margin-bottom: 3rem">
+            <a class="btn btn-primary btn-lg" href="https://github.com/digitallyinduced/ihp/releases/tag/v10072020" role="button" target="_blank">See Update Instructions</a>
+        </p>
+
+        <p>In case you have any questions, let us know in Gitter :)</p>
+
+
+    </div>
+
+
+    <div class="bg-dark" style="padding-top: 120px; padding-bottom: 40px; margin-bottom: 40px; margin-top: 40px;">
+        <div class="container">
+            <h5 style="font-size: 3rem; color: rgb(243, 245, 246); margin: 0">
+                Stay in the loop
+            </h5>
+        </div>
+    </div>
+
+
+
+
+        <div class="stay-in-the-loop container">
+            <h5>Newsletter</h5>
+
+            <p>
+                To get notified about the latest updates, <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3">subscribe to the IHP newsletter</a>.
+            </p>
+            <p>
+                You can also <a href="https://twitter.com/digitallyinduce" target="_blank">follow digitally induced on Twitter</a>.
+            </p>
+
+            <h5>GitHub</h5>
+
+            <p>Leave a star at the GitHub repo: <a href="https://github.com/digitallyinduced/ihp" target="_blank">digitallyinduced/ihp</a></p>
+
+            <p>Questions, or need help with haskell type errors? <a href="https://gitter.im/digitallyinduced/ihp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge" target="_blank">Join us at Gitter</a> (IRC Bridge available)</p>
+
+            <p><a href="https://github.com/digitallyinduced/ihp-blog-example-app" target="_blank">Want to see some demo code? We got you!</a></p>
+
+            <p style="margin-top: 3rem; margin-bottom: 3rem">
+                <a class="btn btn-primary btn-lg" href="https://ihp.digitallyinduced.com/Guide/" role="button">Build your first IHP app now!</a>
+            </p>
+        </div>
+    </div>
+
+    <footer style="margin-top: 3rem; background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
+        <div class="container">
+            <a href="https://github.com/digitallyinduced/ihp">GitHub</a>
+            <a href="/Guide/">Guide</a>
+            <a href="/api-docs/">API</a>
+            <a href="https://www.digitallyinduced.com/imprint.html">Imprint</a>
+
+            <a href="https://www.digitallyinduced.com/">© 2020, digitally induced GmbH</a>
+        </div>
+    </footer>
+
+  </body>
+</html>
