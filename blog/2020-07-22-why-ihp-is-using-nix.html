@@ -6,12 +6,12 @@
         <meta property="og:locale" content="en_EN" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Why IHP is Using The Nix Package Manager" />
-        <meta property="og:description" content="IHP is using the Nix Package Manager for managing it dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion on GitHub, reddit and Hacker News around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP." />
+        <meta property="og:description" content="IHP is using the Nix Package Manager for managing its dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion on GitHub, reddit and Hacker News around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP." />
         <meta property="og:url" content="https://ihp.digitallyinduced.com/" />
         <meta property="og:site_name" content="IHP: Integrated Haskell Platform" />
         <meta name="author" content="digitally induced GmbH">
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:description" content="IHP is using the Nix Package Manager for managing it dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion on GitHub, reddit and Hacker News around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP." />
+        <meta name="twitter:description" content="IHP is using the Nix Package Manager for managing its dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion on GitHub, reddit and Hacker News around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP." />
         <meta name="twitter:title" content="Why IHP is Using The Nix Package Manager" />
         <meta name="twitter:site" content="@digitallyinduce" />
         <meta property="og:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
@@ -44,7 +44,7 @@
         <div style="margin-bottom: 5rem">
             <div class="intro-text">
                 <p>
-                    IHP is using the Nix Package Manager for managing it dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion <a href="https://github.com/digitallyinduced/ihp/issues/131" target="_bl">on GitHub</a>, <a href="https://www.reddit.com/r/haskell/comments/hee4r4/ihp_is_a_modern_batteriesincluded_web_framework/fvr7ste/" target="_blank">reddit</a> and <a href="https://news.ycombinator.com/item?id=23615060" target="_blank">Hacker News</a> around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP.
+                    IHP is using the Nix Package Manager for managing its dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion <a href="https://github.com/digitallyinduced/ihp/issues/131" target="_bl">on GitHub</a>, <a href="https://www.reddit.com/r/haskell/comments/hee4r4/ihp_is_a_modern_batteriesincluded_web_framework/fvr7ste/" target="_blank">reddit</a> and <a href="https://news.ycombinator.com/item?id=23615060" target="_blank">Hacker News</a> around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP.
                 </p>
             </div>
         </div>
@@ -59,7 +59,7 @@
                     <strong>Easy Onboarding</strong>
 
                     <p>
-                        Making haskell web apps is a complicated process. You need the right haskell compiler, a build tool, lots of libraries to do useful things and a database software. To make IHP as accessible as possible, we want to initially hide all this from the user. We set out to make IHP usable for people who have not yet header about ghc and cabal.
+                        Making haskell web apps is a complicated process. You need the right haskell compiler, a build tool, lots of libraries to do useful things and a database software. To make IHP as accessible as possible, we want to initially hide all this from the user. We set out to make IHP usable for people who have not yet heard about ghc and cabal.
                     </p>
 
                     <p>
@@ -67,7 +67,7 @@
                     </p>
 
                     <p>
-                        Npm is mainly used for packaging javascript code. Composer is used for packaging php code. And homebrew is used for installing npm and composer ;) Nix is different: It is able to package system software and all kind of software ecosystems. This is allows us to bundle all the dependencies of IHP using just a single package manager. Exactly what we need to make a truly batteries-included framework.
+                        Npm is mainly used for packaging javascript code. Composer is used for packaging php code. And homebrew is used for installing npm and composer ;) Nix is different: It is able to package system software and all kinds of software ecosystems. This is what allows us to bundle all the dependencies of IHP using just a single package manager. Exactly what we need to make a truly batteries-included framework.
                     </p>
 
                 </li>
@@ -80,11 +80,11 @@
                     </p>
                     
                     <p>
-                        These two properties make nix a great fit to archive our goal of simplifying the package management process. Nix allows us to easily install all this software for developers working with IHP. We can install exactly the right compiler, the right postgres version as well as all the right libraries we need. We can be sure that all packages are installed in the right version (no time sinks!) and nothing is missing. We also don't have any interference with existing packages already installed on the system. It's like docker without the overhead of a VM.
+                        These two properties make nix a great fit to achive our goal of simplifying the package management process. Nix allows us to easily install all this software for developers working with IHP. We can install exactly the right compiler, the right postgres version as well as all the right libraries we need. We can be sure that all packages are installed in the right version (no time sinks!) and nothing is missing. We also don't have any interference with existing packages already installed on the system. It's like docker without the overhead of a VM.
                     </p>
 
                     <p>
-                        The IHP dev server automatically starts and manages a postgres server in the background, just for your project. <a href="https://news.ycombinator.com/item?id=23612217" target="_blank">IHP is the first framework tighly integrating the database in the dev mode.</a> <a href="https://twitter.com/zaiste/status/1277678880782979072" target="_blank">We're sure that this will be standard in a couple of years.</a> Without the possibilities of nix, we would have never tried to the integrate postgres into the IHP dev server. The integrated database schema designer wouldn't really work that well. It might not be obvious, but without nix we would not have tools like the IHP schema designer or the database viewer.
+                        The IHP dev server automatically starts and manages a postgres server in the background, just for your project. <a href="https://news.ycombinator.com/item?id=23612217" target="_blank">IHP is the first framework tighly integrating the database in the dev mode.</a> <a href="https://twitter.com/zaiste/status/1277678880782979072" target="_blank">We're sure that this will be standard in a couple of years.</a> Without the possibilities of nix, we would have never tried to integrate postgres into the IHP dev server. The integrated database schema designer wouldn't really work that well. It might not be obvious, but without nix we would not have tools like the IHP schema designer or the database viewer.
                     </p>
 
                 </li>
@@ -94,7 +94,7 @@
 
                     <p>
                         Nix makes IHP projects reproducable in a way unseen in other software ecosystems.
-                        <a href="https://github.com/digitallyinduced/ihp-boilerplate/blob/master/Config/nix/nixpkgs-config.nix#L21" target="_blank">All IHP projects share exactly the same set of packages.</a> The same compiler version, the same libraries, the same postgres version and even the same custom dependencies your app depends on. <q>Works on my machine</q> will not happen anymore. When there is a problem, other IHP users will most likely already faced the same issue. 
+                        <a href="https://github.com/digitallyinduced/ihp-boilerplate/blob/master/Config/nix/nixpkgs-config.nix#L21" target="_blank">All IHP projects share exactly the same set of packages.</a> The same compiler version, the same libraries, the same postgres version and even the same custom dependencies your app depends on. <q>Works on my machine</q> will not happen anymore. When there is a problem, other IHP users will most likely already haveg faced the same issue. 
                     </p>
 
                     <p>
