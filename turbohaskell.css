@@ -193,3 +193,12 @@ footer a:last-child {
 	display: flex;
 	justify-content: center;
 }
+
+.blog a {
+	color: hsla(192, 81%, 14%, 85%);
+	text-decoration: none;
+}
+
+.blog a:hover {
+	text-decoration: underline;
+}
