@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta property="og:locale" content="en_EN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Why IHP is Using The Nix Package Manager" />
+        <meta property="og:description" content="IHP is using the Nix Package Manager for managing its dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion on GitHub, reddit and Hacker News around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP." />
+        <meta property="og:url" content="https://ihp.digitallyinduced.com/" />
+        <meta property="og:site_name" content="IHP: Integrated Haskell Platform" />
+        <meta name="author" content="digitally induced GmbH">
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content="IHP is using the Nix Package Manager for managing its dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion on GitHub, reddit and Hacker News around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP." />
+        <meta name="twitter:title" content="Why IHP is Using The Nix Package Manager" />
+        <meta name="twitter:site" content="@digitallyinduce" />
+        <meta property="og:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="og:image:secure_url" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="twitter:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="og:image:width" content="1500" />
+        <meta property="og:image:height" content="1500" />
+
+        <title>Why IHP is Using The Nix Package Manager</title>
+
+        <link rel="shortcut icon" type="image/x-icon" href="../ihp-logo.svg"/>
+
+        <link rel="stylesheet" href="../normalize.css"/>
+        <link rel="stylesheet" href="../turbohaskell.css"/>
+    </head>
+  <body>
+
+
+
+    <div style="background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
+        <div class="container">
+            <h1 style="margin-bottom: 2rem; font-size: 2rem; font-weight: 300; border-bottom: 1px solid white; padding-bottom: 0.25rem; border-color: hsla(196, 13%, 60%, 1)">λ IHP: Integrated Haskell Platform</h1>
+
+            <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">Why IHP is Using The Nix Package Manager</h1>
+            <p style="margin-top: 1rem; font-size: 1.75rem; font-weight: 600; color:hsla(196, 13%, 80%, 1)">by Marc Scholten, 22.07.2020</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="margin-bottom: 5rem">
+            <div class="intro-text">
+                <p>
+                    IHP is using the Nix Package Manager for managing its dependencies, such as haskell packages, compilers and even postgres. There has been a bit of discussion <a href="https://github.com/digitallyinduced/ihp/issues/131" target="_bl">on GitHub</a>, <a href="https://www.reddit.com/r/haskell/comments/hee4r4/ihp_is_a_modern_batteriesincluded_web_framework/fvr7ste/" target="_blank">reddit</a> and <a href="https://news.ycombinator.com/item?id=23615060" target="_blank">Hacker News</a> around the use of nix. We want to respond to this discussion by sharing a bit of the background on why we decided to make nix a hard requirement for IHP.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="container">
+        <div>
+            <ul class="features">
+                <li>
+                    <strong>Easy Onboarding</strong>
+
+                    <p>
+                        Making haskell web apps is a complicated process. You need the right haskell compiler, a build tool, lots of libraries to do useful things and a database software. To make IHP as accessible as possible, we want to initially hide all this from the user. We set out to make IHP usable for people who have not yet heard about ghc and cabal.
+                    </p>
+
+                    <p>
+                        Additionally when you are using an older compiler version, some library is missing or your postgres is not the right version this will cause trouble. Solving these package management issues is always a huge time sink.
+                    </p>
+
+                    <p>
+                        Npm is mainly used for packaging javascript code. Composer is used for packaging php code. And homebrew is used for installing npm and composer ;) Nix is different: It is able to package system software and all kinds of software ecosystems. This is what allows us to bundle all the dependencies of IHP using just a single package manager. Exactly what we need to make a truly batteries-included framework.
+                    </p>
+
+                </li>
+
+                <li>
+                    <strong>Integrated Dev Tooling</strong>
+
+                    <p>
+                        Nix is unique in that it allows us to exactly specify the version of a package we want to install. We can say: <i>Install the latest <q>postgres 12.3</q></i>. Nix also allows us to install packages locally for a specific project instead of managing all the dependencies system wide.
+                    </p>
+                    
+                    <p>
+                        These two properties make nix a great fit to achive our goal of simplifying the package management process. Nix allows us to easily install all this software for developers working with IHP. We can install exactly the right compiler, the right postgres version as well as all the right libraries we need. We can be sure that all packages are installed in the right version (no time sinks!) and nothing is missing. We also don't have any interference with existing packages already installed on the system. It's like docker without the overhead of a VM.
+                    </p>
+
+                    <p>
+                        The IHP dev server automatically starts and manages a postgres server in the background, just for your project. <a href="https://news.ycombinator.com/item?id=23612217" target="_blank">IHP is the first framework tighly integrating the database in the dev mode.</a> <a href="https://twitter.com/zaiste/status/1277678880782979072" target="_blank">We're sure that this will be standard in a couple of years.</a> Without the possibilities of nix, we would have never tried to integrate postgres into the IHP dev server. The integrated database schema designer wouldn't really work that well. It might not be obvious, but without nix we would not have tools like the IHP schema designer or the database viewer.
+                    </p>
+
+                </li>
+
+                <li>
+                    <strong>Pinned Versions</strong>
+
+                    <p>
+                        Nix makes IHP projects reproducable in a way unseen in other software ecosystems.
+                        <a href="https://github.com/digitallyinduced/ihp-boilerplate/blob/master/Config/nix/nixpkgs-config.nix#L21" target="_blank">All IHP projects share exactly the same set of packages.</a> The same compiler version, the same libraries, the same postgres version and even the same custom dependencies your app depends on. <q>Works on my machine</q> will not happen anymore. When there is a problem, other IHP users will most likely already have faced the same issue. 
+                    </p>
+
+                    <p>
+                        This is only possible because nix allows us to pin down the set of package definitions to a specific git commit of the nix package registry.
+                    </p>
+                </li>
+
+                <li>
+                    <strong>Trade Offs</strong>
+
+                    <p>
+                        Nix is far from perfect. Early on we had a lot of problems with slow rebuild times, which we could resolve by using the great <a href="https://cachix.org/" target="_blank">cachix</a> binary cache. Additionally Nix is very hard to install. This is a stumbling block for a lot of people. <a href="https://github.com/digitallyinduced/ihp/issues/93" target="_blank">Especially when using certain macOS systems you cannot even install nix at all.</a> Luckily most of the nix problems, like the macOS issues will be solved with time. 
+                    </p>
+
+                    <p>
+                        Once nix is set up, it's usually working very well. Over time the benefits of nix really outweight the time spent on solving nix-specific problems. The rising industry adoption of Nix is a good indicator for this. <a href="https://engineering.shopify.com/blogs/engineering/what-is-nix" target="_blank">Cool companies like Shopify are progressively adopting Nix.</a>
+                    </p>
+
+                    <p>
+                        At digitally induced we believe that highest quality software is built on solid foundations.
+                        Nix is technological superior to any other existing package manager. Therefore we belive it's right to make nix a hard requirement of IHP. 
+                    </p>
+                </li>
+            </ul>
+
+
+        </div>
+
+
+        <p style="margin-bottom: 3rem">
+            <a class="btn btn-primary btn-lg" href="https://ihp.digitallyinduced.com/" role="button" target="_blank">Learn More About IHP</a>
+        </p>
+
+        <p>Feel free to share this post on Twitter, Reddit, Hacker News or anywhere else on the internet :)</p>
+
+
+    </div>
+
+
+    <div class="bg-dark" style="padding-top: 120px; padding-bottom: 40px; margin-bottom: 40px; margin-top: 40px;">
+        <div class="container">
+            <h5 style="font-size: 3rem; color: rgb(243, 245, 246); margin: 0">
+                Stay in the loop
+            </h5>
+        </div>
+    </div>
+
+
+
+
+        <div class="stay-in-the-loop container">
+            <h5>Newsletter</h5>
+
+            <p>
+                To get notified about the latest updates, <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3">subscribe to the IHP newsletter</a>.
+            </p>
+            <p>
+                You can also <a href="https://twitter.com/digitallyinduce" target="_blank">follow digitally induced on Twitter</a>.
+            </p>
+
+            <h5>GitHub</h5>
+
+            <p>Leave a star at the GitHub repo: <a href="https://github.com/digitallyinduced/ihp" target="_blank">digitallyinduced/ihp</a></p>
+
+            <p>Questions, or need help with haskell type errors? <a href="https://gitter.im/digitallyinduced/ihp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge" target="_blank">Join us at Gitter</a> (IRC Bridge available)</p>
+
+            <p><a href="https://github.com/digitallyinduced/ihp-blog-example-app" target="_blank">Want to see some demo code? We got you!</a></p>
+
+            <p style="margin-top: 3rem; margin-bottom: 3rem">
+                <a class="btn btn-primary btn-lg" href="https://ihp.digitallyinduced.com/Guide/" role="button">Build your first IHP app now!</a>
+            </p>
+        </div>
+    </div>
+
+    <footer style="margin-top: 3rem; background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
+        <div class="container">
+            <a href="https://github.com/digitallyinduced/ihp">GitHub</a>
+            <a href="/Guide/">Guide</a>
+            <a href="/api-docs/">API</a>
+            <a href="https://www.digitallyinduced.com/imprint.html">Imprint</a>
+
+            <a href="https://www.digitallyinduced.com/">© 2020, digitally induced GmbH</a>
+        </div>
+    </footer>
+
+  </body>
+</html>
