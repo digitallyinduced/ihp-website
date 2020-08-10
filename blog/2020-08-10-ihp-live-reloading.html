@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta property="og:locale" content="en_EN" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="IHP Live Reloading: How it works" />
+        <meta property="og:description" content="IHP is using Haskell for building your application code. Haskell code typically needs to be compiled before you can run your application code. IHP provides a built-in development server that provides instant feedback when making changes to your application code. In this post we're going to explain the technical details behind the magic." />
+        <meta property="og:url" content="https://ihp.digitallyinduced.com/" />
+        <meta property="og:site_name" content="IHP: Integrated Haskell Platform" />
+        <meta name="author" content="digitally induced GmbH">
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content="IHP is using Haskell for building your application code. Haskell code typically needs to be compiled before you can run your application code. IHP provides a built-in development server that provides instant feedback when making changes to your application code. In this post we're going to explain the technical details behind the magic." />
+        <meta name="twitter:title" content="IHP Live Reloading: How it works" />
+        <meta name="twitter:site" content="@digitallyinduce" />
+        <meta property="og:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="og:image:secure_url" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="twitter:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+        <meta property="og:image:width" content="1500" />
+        <meta property="og:image:height" content="1500" />
+
+        <title>IHP Live Reloading: How it works</title>
+
+        <link rel="shortcut icon" type="image/x-icon" href="../ihp-logo.svg"/>
+
+        <link rel="stylesheet" href="../normalize.css"/>
+        <link rel="stylesheet" href="../turbohaskell.css"/>
+        <style>
+            .features li {
+                margin-bottom: 0.25rem;
+            }
+        </style>
+    </head>
+  <body>
+
+
+
+    <div style="background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
+        <div class="container">
+            <h1 style="margin-bottom: 2rem; font-size: 2rem; font-weight: 300; border-bottom: 1px solid white; padding-bottom: 0.25rem; border-color: hsla(196, 13%, 60%, 1)">λ IHP: Integrated Haskell Platform</h1>
+
+            <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">IHP Live Reloading: How it works</h1>
+            <p style="margin-top: 1rem; font-size: 1.75rem; font-weight: 600; color:hsla(196, 13%, 80%, 1)">by Marc Scholten, 10.08.2020</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="margin-bottom: 5rem">
+            <div class="intro-text">
+                <p>
+                    IHP is using Haskell for building your application code. Haskell code typically needs to be compiled before you can run your application code. IHP provides a built-in development server that provides instant feedback when making changes to your application code. In this post we're going to explain the technical details behind the magic.
+                </p>
+
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/LmekIvS19GQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="container">
+        <div>
+            <ul class="features">
+                <li>
+                    <strong>Starting an IHP app</strong>
+
+                    <p>
+                        Let's first take a look at what happens when you start your IHP app by running <code>./start</code>.
+                    </p>
+
+                    <p>
+                        The <a href="https://github.com/digitallyinduced/ihp-boilerplate/blob/master/start" target="_blank"><code>./start</code></a> script in your project is basically just a small wrapper that makes sure that all dependencies that are managed by nix are available and then calls the <code>RunDevServer</code> binary. <a href="https://github.com/digitallyinduced/ihp/blob/master/IHP/IDE/DevServer.hs" target="_blank">This binary is part of IHP</a> and does the actual application startup as well as managing the postgres server.
+                    </p>
+
+                    <p>
+                        You can think of <code>RunDevServer</code> as a small process manager. When <code>RunDevServer</code> is started, it will directly start all processes required for your application to run:
+                        <ul style="list-style: initial; margin-left: 2rem">
+                            <li>the web-based IDE</li>
+                            <li>a status server on port 8000 showing the compiler status and possible type errors</li>
+                            <li>a websocket server used for communicating file changes for live reloading</li>
+                            <li>a ghci (the standard haskell REPL) where it directly loads your app</li>
+                            <li>a postgres server bound to unix socket</li>
+                            <li>a file watcher to track haskell and css file changes</li>
+                        </ul>
+                    </p>
+
+                    <p>
+                        All these processes are started in parallel for fast performance and synchronised in the main event loop of the dev server. Made possible thanks to haskells great concurrency capabilities.
+                    </p>
+
+                    <p>
+                        The most important process is the ghci process with your app. Instead of fully recompiling your app on every file change, IHP loads your app in the repl and then refreshes only the changed files. 
+                    </p>
+
+                    <p>
+                        At first ghci needs a couple of seconds to load all haskell files of your application. While loading your application the status server is serving all http requests on localhost:8000. The status server will also show all type errors in case ghci failed to load your app. When the ghci finished loading, the status server is stopped and your application is started on localhost:8000.
+                    </p>
+
+                </li>
+
+                <li>
+                    <strong>Haskell File Changes</strong>
+
+                    <p>
+                        <iframe width="100%" height="500" src="https://www.youtube.com/embed/nTjjDo57B8g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </p>
+
+                    <p>
+                        Once your application is started, the dev server mainly deals with file changes. Using a file watcher the dev server is notified about any changes to your haskell files in your project. When a haskell file is changed the app process running in the ghci process is stopped and a refresh (<code>:r</code>) is triggered. The refresh is usually very fast. Once completed the app server will be started again.
+                    </p>
+
+                    <p>
+                        Once the haskell app has started, open browser pages will be notified using a websocket connection. The open pages will fetch the current page via ajax and will then update the dom using <a href="https://github.com/patrick-steele-idem/morphdom" target="_blank">a diff and patch approach</a>. So only dom nodes that have actually changed will be touched during the live reloading. This approach will keep existing page state like scroll position or text typed into a form field. It allows for a very fast and productive feedback cycle.
+                    </p>
+                </li>
+
+                <li>
+                    <strong>CSS File Changes</strong>
+
+                    <p>
+                        <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Did you know: <a href="https://twitter.com/hashtag/ihp?src=hash&amp;ref_src=twsrc%5Etfw">#ihp</a> also supports live reloading of CSS. <a href="https://t.co/uRCCr3gkHz">pic.twitter.com/uRCCr3gkHz</a></p>&mdash; digitally induced (@digitallyinduce) <a href="https://twitter.com/digitallyinduce/status/1277583045919375363?ref_src=twsrc%5Etfw">June 29, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </p>
+
+                    <p>
+                        IHP also supports live reloading of CSS files. Once IHP sees a file change to your CSS files in the <code>static</code> directory it will notify all open browser tabs using its websocket connection. Once notified in the browser IHP will look for any <code>&lt;link rel=&quot;stylesheet&quot;&gt;</code> and <a href="https://github.com/digitallyinduced/ihp/blob/master/lib/IHP/static/livereload.js#L68" target="_blank">will reload the css file using a cache buster</a>.
+                    </p>
+
+                    <p>
+                        This is only possible because nix allows us to pin down the set of package definitions to a specific git commit of the nix package registry.
+                    </p>
+                </li>
+
+                <li>
+                    <strong>Type Errors</strong>
+
+                    <p>
+                        Sometimes you make a change which will stop your application from compiling. In these error cases the status server jumps in and starts listening on localhost:8000. The status server will then display the error message so you can quickly fix it:
+                    </p>
+
+                    <img style="width: 100%; border-radius: 8px" src="https://ihp.digitallyinduced.com/releases/v07082020.png" alt="Example of a status server error message"/>
+
+                    <p>
+                        Additionally open browser tabs will be notified about this and will refresh. This way the error is instantly visible to you.
+                    </p>
+                </li>
+
+                <li>
+                    <strong>Batteries-included</strong>
+
+                    <p>
+                        While the above steps are technically complicated, when doing actual development you will not see much of this complexity.  Lots of time have been spent to find the best approach and smoothing out all the edge cases. The whole process is very much inspired by PHP where you just make file changes and it works. The live reloading really <q>just works</q>.
+                    </p>
+
+                    <p>
+                        The dev server is the heart of IHP and makes the dev process extremely productive. You get all the benefits of type-safety with the development speed you previously only got with scripting languages. If you haven't already it's time to try it out! 🚀
+                    </p>
+                </li>
+            </ul>
+
+
+        </div>
+
+
+        <p style="margin-bottom: 3rem">
+            <a class="btn btn-primary btn-lg" href="https://ihp.digitallyinduced.com/" role="button" target="_blank">Learn More About IHP</a>
+        </p>
+
+        <p>Feel free to share this post on Twitter, Reddit, Hacker News or anywhere else on the internet :)</p>
+
+
+        <script src="https://utteranc.es/client.js"
+                repo="digitallyinduced/ihp-website"
+                issue-term="title"
+                label="✨💬✨"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+        </script>
+
+
+    </div>
+
+
+    <div class="bg-dark" style="padding-top: 120px; padding-bottom: 40px; margin-bottom: 40px; margin-top: 40px;">
+        <div class="container">
+            <h5 style="font-size: 3rem; color: rgb(243, 245, 246); margin: 0">
+                Stay in the loop
+            </h5>
+        </div>
+    </div>
+
+
+
+
+        <div class="stay-in-the-loop container">
+            <h5>Newsletter</h5>
+
+            <p>
+                To get notified about the latest updates, <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3">subscribe to the IHP newsletter</a>.
+            </p>
+            <p>
+                You can also <a href="https://twitter.com/digitallyinduce" target="_blank">follow digitally induced on Twitter</a>.
+            </p>
+
+            <h5>GitHub</h5>
+
+            <p>Leave a star at the GitHub repo: <a href="https://github.com/digitallyinduced/ihp" target="_blank">digitallyinduced/ihp</a></p>
+
+            <p>Questions, or need help with haskell type errors? <a href="https://gitter.im/digitallyinduced/ihp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge" target="_blank">Join us at Gitter</a> (IRC Bridge available)</p>
+
+            <p><a href="https://github.com/digitallyinduced/ihp-blog-example-app" target="_blank">Want to see some demo code? We got you!</a></p>
+
+            <p style="margin-top: 3rem; margin-bottom: 3rem">
+                <a class="btn btn-primary btn-lg" href="https://ihp.digitallyinduced.com/Guide/" role="button">Build your first IHP app now!</a>
+            </p>
+
+            <div class="blog">
+                <h5>Blog</h5>
+
+                <p>
+                    <a href="/blog/2020-08-10-ihp-live-reloading.html">10.08.2020: IHP Live Reloading: How it works</a>
+                </p>
+                <p>
+                    <a href="/releases/v07082020.html">07.08.2020: v07082020 released 🎉</a>
+                </p>
+                <p>
+                    <a href="/releases/v24072020.html">24.07.2020: v24072020 released 🎉</a>
+                </p>
+                <p>
+                    <a href="/blog/2020-07-22-why-ihp-is-using-nix.html">22.07.2020: Why IHP is Using The Nix Package Manager</a>
+                </p>
+                <p>
+                    <a href="/releases/v10072020.html">10.07.2020: v10072020 released 🎉</a>
+                </p>
+                <p>
+                    <a href="https://ihp.digitallyinduced.com/">23.06.2020: IHP has been released to the public</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer style="margin-top: 3rem; background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
+        <div class="container">
+            <a href="https://github.com/digitallyinduced/ihp">GitHub</a>
+            <a href="/Guide/">Guide</a>
+            <a href="/api-docs/">API</a>
+            <a href="https://www.digitallyinduced.com/imprint.html">Imprint</a>
+
+            <a href="https://www.digitallyinduced.com/">© 2020, digitally induced GmbH</a>
+        </div>
+    </footer>
+
+  </body>
+</html>
