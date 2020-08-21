@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style>
+			* {
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			body {
+				background-color: #073642;
+				color: rgb(243, 245, 246);
+				text-align: center;
+				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+				font-size: 3em;
+			}
+			div {
+				margin: 0;
+				position: absolute;
+				top: 50%;
+ 				left: 50%;
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+			}
+			h1 {
+				margin: 0;	
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div>
+			<h3><a style="font-size: 1.2em">λ</a> IHP</h3>
+			<h1 id="github">0</h1>
+			<a id="new" style="font-size: 0.7em">+0</a>
+			<p>GitHub Stars</p>
+		</div>
+		<a style="position: absolute; right: 1%; bottom: 1%; font-size: 0.35em;" id="time">You need to activate JavaScript to run this.</a>
+		<script>
+			var d = new Date();
+			$("#time").html("Counting since " + d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes());
+			
+			var beginStars, newStars, stars = 0;
+			$.getJSON('https://api.github.com/repos/digitallyinduced/ihp', function(data) {
+				beginStars = data.stargazers_count;
+				refresh();
+			});
+			var refresher = window.setInterval(refresh, 5000);
+			
+			function refresh() {
+				$.getJSON('https://api.github.com/repos/digitallyinduced/ihp', function(data) {
+					stars = data.stargazers_count;
+					newStars = stars - beginStars;
+			        $("#github").html(`${stars}`);
+			        renderNew(newStars);
+			    });
+			}
+			
+			function renderNew(count) {
+				if (count >= 0) {
+			        $("#new").html("+" + count).css("color", "green");
+				} else {
+					$("#new").html(count).css("color", "red");
+				}
+			}
+		</script>
+	</body>
+</html>
