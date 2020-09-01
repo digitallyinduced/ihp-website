@@ -163,6 +163,8 @@ footer a:last-child {
 
     .quote-container {
         flex-wrap: nowrap !important;
+        margin-right: 5rem !important;
+        margin-left: 5rem !important;
     }
 }
 
@@ -170,7 +172,6 @@ footer a:last-child {
     border-radius: 1rem;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
     max-width: 100%;
-    margin: 0.5rem;
 }
 
 .quote-col {
