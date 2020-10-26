@@ -1,33 +1,10 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta property="og:locale" content="en_EN" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="IHP is a modern batteries-included Web Framework, built on top of Haskell and Nix." />
-        <meta property="og:description" content="IHP is a modern batteries-included Web Framework, built on top of Haskell and Nix." />
-        <meta property="og:url" content="https://ihp.digitallyinduced.com/" />
-        <meta property="og:site_name" content="IHP: Integrated Haskell Platform" />
-        <meta name="author" content="digitally induced GmbH">
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:description" content="IHP is a modern batteries-included Web Framework, built on top of Haskell and Nix." />
-        <meta name="twitter:title" content="IHP: Integrated Haskell Platform" />
-        <meta name="twitter:site" content="@digitallyinduce" />
-        <meta property="og:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
-        <meta property="og:image:secure_url" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
-        <meta property="twitter:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
-        <meta property="og:image:width" content="1500" />
-        <meta property="og:image:height" content="1500" />
+module Web.View.Static.Startpage where
+import Web.View.Prelude
 
-        <title>IHP: Integrated Haskell Platform, a batteries-included web framework built on purely functional programming technologies</title>
+data StartpageView = StartpageView
 
-        <link rel="shortcut icon" type="image/x-icon" href="/ihp-logo.svg"/>
-
-        <link rel="stylesheet" href="normalize.css"/>
-        <link rel="stylesheet" href="turbohaskell.css"/>
-    </head>
-  <body>
+instance View StartpageView ViewContext where
+    html StartpageView = [hsx|
 
 
 
@@ -35,7 +12,7 @@
         <div class="container">
             <h1 style="margin-bottom: 2rem; font-size: 2rem; font-weight: 300; border-bottom: 1px solid white; padding-bottom: 0.25rem; border-color: hsla(196, 13%, 60%, 1)">λ IHP: Integrated Haskell Platform</h1>
 
-            <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">Productive, Type-Safe and Fun!</h1>
+            <h2 style="margin-top: 0; margin-bottom: 0rem; font-weight: 900; font-size: 3rem">Productive, Type-Safe and Fun!</h2>
             <p style="margin-top: 1rem; font-size: 1.75rem; font-weight: 600; color:hsla(196, 13%, 80%, 1)">IHP is a modern batteries-included Web Framework, built on top of Haskell and Nix.</p>
 
             <a class="btn" href="/Guide/" style="margin-top: 2rem">Get Started Now</a>
@@ -96,7 +73,7 @@
 
 <div class="container" style="margin-bottom: 5rem">
     <h5>Watch the Demo-Video:</h5>
-    <iframe id="demo-video" width="100%" height="300" src="https://www.youtube.com/embed/UbDtS_mUMpI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe id="demo-video" width="100%" height="300" src="https://www.youtube.com/embed/UbDtS_mUMpI"></iframe>
 </div>
 
     <div class="quote-container">
@@ -160,7 +137,7 @@
 
                     <p>Watch it in action:</p>
 
-                    <iframe style="width: 100%; height: 450px" src="https://www.youtube-nocookie.com/embed/nTjjDo57B8g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe style="width: 100%; height: 450px" src="https://www.youtube-nocookie.com/embed/nTjjDo57B8g"></iframe>
                 </li>
 
                 <li>
@@ -260,12 +237,10 @@
 
     <div style="display: flex; flex-direction: row; justify-content: space-evenly; flex-wrap: wrap;">
         <div style="margin: 20px;">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/PLl9Sjq6Nzc" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PLl9Sjq6Nzc"></iframe>
         </div>
         <div style="margin: 20px;">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/oYmoEHLX2lA" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/oYmoEHLX2lA"></iframe>
         </div>
     </div>
 
@@ -343,19 +318,7 @@
                 </p>
             </div>
         </div>
-    </div>
 
-    <footer style="margin-top: 3rem; background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
-        <div class="container">
-            <a href="https://github.com/digitallyinduced/ihp">GitHub</a>
-            <a href="/Guide/">Guide</a>
-            <a href="/api-docs/">API</a>
-            <a href="https://ihp-forum.digitallyinduced.com/">Forum</a>
-            <a href="https://www.digitallyinduced.com/imprint.html">Imprint</a>
 
-            <a href="https://www.digitallyinduced.com/">© 2020, digitally induced GmbH</a>
-        </div>
-    </footer>
+    |]
 
-  </body>
-</html>

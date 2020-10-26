@@ -15,3 +15,7 @@ data ViewContext = ViewContext
     , controllerContext :: ControllerSupport.ControllerContext
     , layout :: Layout
     }
+
+data StaticController
+    = StartpageAction
+    deriving (Eq, Show, Data)
