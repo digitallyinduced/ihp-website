@@ -24,12 +24,36 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
     {stylesheets}
     {scripts}
 </head>
-<body>
-    {renderFlashMessages}
-    {inner}
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/">IHP <small class="text-muted">Integrated Haskell Platform</small></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href={PostsAction}>Blog</a>
+            </div>
+            <div class="ml-auto navbar-nav">
 
-    <footer style="margin-top: 3rem; background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
-        <div class="container">
+                <span class="nav-link" id="github-navlink">
+                    <a class="github-button" href="https://github.com/digitallyinduced/ihp" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star digitallyinduced/ihp on GitHub">Star</a>
+                </span>
+                <a class="nav-link" href="https://github.com/digitallyinduced/ihp" target="_blank">GitHub</a>
+                <a class="nav-link" href="https://twitter.com/digitallyinduce" target="_blank">Twitter</a>
+                <a class="nav-link" href="https://www.youtube.com/playlist?list=PLenFm8BWuKlS0IaE31DmKB_PbkMLmwWmG" target="_blank">YouTube</a>
+                <a class="nav-link" href="https://ihp.digitallyinduced.com/Guide/" target="_blank">Guide</a>
+                <a class="nav-link" href={CommunityAction}>Community</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        {renderFlashMessages}
+        {inner}
+    </div>
+
+    <footer class="mt-auto" style="margin-top: 3rem; background-color: #073642; padding-top: 2rem; padding-bottom: 2rem; color:hsla(196, 13%, 96%, 1)">
+        <div class="container" id="footer-nav">
             <a href="https://github.com/digitallyinduced/ihp">GitHub</a>
             <a href="/Guide/">Guide</a>
             <a href="/api-docs/">API</a>
@@ -38,13 +62,21 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
 
             <a href="https://www.digitallyinduced.com/">© 2020, digitally induced GmbH</a>
         </div>
+
+        <div class="container" id="footer-about">
+            <p>
+                IHP was initially created at <a href="https://www.digitallyinduced.com/">digitally induced</a>. It's now improved and extended by <a href="https://github.com/digitallyinduced/ihp/graphs/contributors">a team of open source contributors</a>.
+            </p>
+
+            <a id="ihp-cloud-logo" href="https://ihpcloud.com/" target="_blank"><img src="https://ihpcloud.com/deployed-with-ihp-cloud-white.svg" alt="Deployed with IHP Cloud"></a>
+        </div>
     </footer>
 </body>
 |]
 
 stylesheets = do
     when (isDevelopment FrameworkConfig.environment) [hsx|
-        <link rel="stylesheet" href="/normalize.css"/>
+        <link rel="stylesheet" href="/vendor/bootstrap.min.css"/>
         <link rel="stylesheet" href="/app.css"/>
     |]
     when (isProduction FrameworkConfig.environment) [hsx|
@@ -62,6 +94,7 @@ scripts = do
         <script src="/helpers.js"></script>
         <script src="/vendor/morphdom-umd.min.js"></script>
     |]
+    [hsx|<script async defer src="https://buttons.github.io/buttons.js"></script>|]
     when (isProduction FrameworkConfig.environment) [hsx|
         <script src="/prod.js"></script>
     |]

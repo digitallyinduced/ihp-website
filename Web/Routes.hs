@@ -6,3 +6,6 @@ import Web.Types
 -- Generator Marker
 instance AutoRoute StaticController
 
+instance AutoRoute PostsController
+type instance ModelControllerMap WebApplication Post = PostsController
+
