@@ -131,12 +131,10 @@ instance View StartpageView ViewContext where
 
                     <p>Code Generators will help you to quickly build things even when you have no professional haskell experience yet. Pick up haskell by building real world applications.</p>
 
-                    <p><img src="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" style="width: 100%"/></p>
-
                 </li>
 
                 <li>
-                    <strong>Beautiful Dev Tooling:</strong>
+                    <strong>Productive Dev Tooling:</strong>
 
                     <p>
                         To speed up your development process, IHP comes with a full set of web
