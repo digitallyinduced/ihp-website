@@ -1,0 +1,171 @@
+
+body {
+    background-color: rgb(250, 250, 251);
+}
+
+.bg-light {
+    background-color: hsla(192, 81%, 5%, 0.04);
+}
+
+.navbar-logo {
+    height: 30px;
+}
+
+code, pre {
+    background-color: rgba(0, 43, 54, 0.11);
+    color: #002b36;
+    padding: 1rem;
+    border-radius: 3px;
+}
+
+label {
+    font-weight: bold;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #073642;
+}
+
+html, body {
+    color: #073642;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: hsla(192, 81%, 26%, 0.8);
+}
+
+.nav .nav-link.active {
+    color: #268BD2;
+    font-weight: 600;
+}
+
+
+.container {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-nav .nav-item {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: rgb(153, 159, 185);;
+}
+
+.navbar-text.project-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.8;
+    color: rgb(153, 159, 185);
+    padding-bottom: 0;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #007bff;
+}
+
+.btn.btn-primary {
+    background-color: hsla(192, 81%, 26%, 1);
+    color: hsla(196, 13%, 98%, 1);
+    border: 1px solid hsla(192, 81%, 19%, 0.1);
+    font-weight: 500;
+}
+
+.btn.btn-primary:active {
+    background-color: hsla(192, 81%, 26%, 0.9) !important;
+    color: hsla(196, 13%, 98%, 1) !important;
+    border: 1px solid hsla(192, 81%, 19%, 0.1) !important;
+}
+
+.btn.btn-primary:hover {
+    background-color: hsla(192, 81%, 26%, 0.8);
+}
+
+.btn-outline-primary {
+    border-color: hsla(192, 81%, 26%, 1);
+    color: hsla(192, 81%, 26%, 1);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:active {
+    background-color: hsla(192, 81%, 26%, 1) !important;
+    border-color: hsla(192, 81%, 26%, 1) !important;
+}
+
+a {
+    color: hsla(192, 81%, 26%, 1);
+}
+
+a:hover {
+    color: hsla(192, 81%, 15%, 1);
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: hsla(192, 81%, 26%, 1);
+    background-color: hsla(192, 81%, 26%, 1);
+}
+
+.text-muted {
+    color: rgb(153, 159, 185) !important;
+}
+
+iframe {
+    border: 0;
+}
+
+#github-navlink {
+    transform: translateY(-2px);
+    display: block;
+}
+
+
+#footer-nav a {
+    color: hsla(196, 13%, 80%, 1);
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 4px;
+    font-size: 11px;
+}
+
+#footer-nav a:hover {
+    color: hsla(196, 13%, 80%, 1);
+}
+
+#footer-nav a:last-child {
+    margin-left: 16px;
+}
+
+@media (min-width: 860px) {
+    #footer-nav a {
+        margin-right: 1rem;
+        font-size: 1rem;
+    }
+
+    #footer-nav a:last-child {
+        float: right;
+    }
+}
+
+#footer-about {
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    font-size: 11px;
+}
+
+#footer-about, #footer-about a {
+    color: hsla(196, 13%, 80%, 1);
+}
+
+#ihp-cloud-logo img {
+    width: 160px;
+}
+
+#community h2 {
+    margin-top: 3rem;
+}

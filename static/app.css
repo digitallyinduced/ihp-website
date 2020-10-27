@@ -1,0 +1,11 @@
+@import "./layout.css";
+@import "./startpage.css";
+
+.quote-link {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.quote-link img {
+    width: 66%;
+}

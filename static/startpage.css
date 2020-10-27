@@ -1,0 +1,40 @@
+#startpage h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#startpage .how-it-works h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#startpage .how-it-works h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#startpage .how-it-works .row {
+    margin-bottom: 3rem;
+}
+
+#startpage .how-it-works p {
+    color: hsla(192, 81%, 26%, 0.8);
+}
+
+#startpage .tweet {
+    width: 100%;
+}
+
+@media (min-width: 800px) {
+    #startpage .tweet {
+        width: 50%;
+    }
+}
+
+.blockquote {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 1px 2px 0 rgb(7 54 66 / 0.2);
+    border-radius: 12px;
+}
