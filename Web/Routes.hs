@@ -14,7 +14,15 @@ instance HasPath GuideController where
 
 instance CanRoute GuideController where
     parseRoute' = do
-        string "/Guide"
-        optional "/"
-        endOfInput
-        pure GuideAction
+        let guide = do
+                string "/Guide"
+                optional "/"
+                endOfInput
+                pure GuideAction
+        let apiDocs = do
+                string "/api-docs"
+                optional "/"
+                endOfInput
+                pure ApiDocsAction
+
+        guide <|> apiDocs

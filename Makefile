@@ -34,5 +34,9 @@ static/Guide: build/ihp-src
 	rm -rf static/Guide
 	cp -R build/ihp-src/Guide static/Guide
 
+static/api-docs: build/ihp-src
+	( cd build/ihp-src; nix-shell --command "chmod +x build-haddock; ./build-haddock" )
+	mv build/ihp-src/haddock-build static/api-docs
+
 build/bin/RunUnoptimizedProdServer: static/ihp-new.tar.gz static/Guide
 build/bin/RunOptimizedProdServer: static/ihp-new.tar.gz static/Guide

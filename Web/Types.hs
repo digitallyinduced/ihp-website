@@ -24,6 +24,7 @@ data StaticController
 
 data GuideController
     = GuideAction -- Redirect /Guide/ and /Guide to /Guide/index.html
+    | ApiDocsAction -- Redirect /api-docs and /api-docs/ to /api-docs/index.html
     deriving (Eq, Show, Data)
 
 data PostsController

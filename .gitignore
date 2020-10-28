@@ -19,3 +19,4 @@ static/prod.*
 Config/client_session_key.aes
 static/ihp-new.tar.gz
 static/Guide
+static/api-docs
