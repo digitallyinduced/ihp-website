@@ -9,3 +9,12 @@ instance AutoRoute StaticController
 instance AutoRoute PostsController
 type instance ModelControllerMap WebApplication Post = PostsController
 
+instance HasPath GuideController where
+    pathTo GuideAction = "/Guide/index.html"
+
+instance CanRoute GuideController where
+    parseRoute' = do
+        string "/Guide"
+        optional "/"
+        endOfInput
+        pure GuideAction

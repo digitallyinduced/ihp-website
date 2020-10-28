@@ -22,6 +22,10 @@ data StaticController
     | QuotesAction
     deriving (Eq, Show, Data)
 
+data GuideController
+    = GuideAction -- Redirect /Guide/ and /Guide to /Guide/index.html
+    deriving (Eq, Show, Data)
+
 data PostsController
     = PostsAction
     | NewPostAction

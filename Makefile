@@ -21,3 +21,18 @@ JS_FILES += ${IHP}/static/vendor/morphdom-umd.min.js
 JS_FILES += ${IHP}/static/vendor/turbolinks.js
 JS_FILES += ${IHP}/static/vendor/turbolinksInstantClick.js
 JS_FILES += ${IHP}/static/vendor/turbolinksMorphdom.js
+
+build/ihp-src:
+	git clone --depth 1 https://github.com/digitallyinduced/ihp.git build/ihp-src
+
+static/ihp-new.tar.gz: build/ihp-src
+	( cd build/ihp-src/ProjectGenerator; make tarball.tar.gz )
+	mv build/ihp-src/ProjectGenerator/tarball.tar.gz static/ihp-new.tar.gz
+
+static/Guide: build/ihp-src
+	( cd build/ihp-src; nix-shell --command "cd Guide; make all")
+	rm -rf static/Guide
+	cp -R build/ihp-src/Guide static/Guide
+
+build/bin/RunUnoptimizedProdServer: static/ihp-new.tar.gz static/Guide
+build/bin/RunOptimizedProdServer: static/ihp-new.tar.gz static/Guide

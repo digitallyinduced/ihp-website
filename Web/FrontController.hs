@@ -7,6 +7,7 @@ import Web.Types
 -- Controller Imports
 import Web.Controller.Posts
 import Web.Controller.Static
+import Web.Controller.Guide
 import IHP.Welcome.Controller
 
 instance FrontController WebApplication where
@@ -15,6 +16,7 @@ instance FrontController WebApplication where
         -- Generator Marker
         , parseRoute @PostsController
         , parseRoute @StaticController
+        , parseRoute @GuideController
         ]
 
 instance InitControllerContext WebApplication
