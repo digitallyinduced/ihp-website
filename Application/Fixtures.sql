@@ -59,6 +59,21 @@ Compare this to the ruby ecosystem: When working with rails you usually need to 
 It’s really a blessing.
 </p>
 
+<h2>Managed Side Effects</h2>
+<p>The way you deal with the file system, external APIs and user input is way different in Haskell than in other less functional programming languages. Your program consists of a main routine that handles the side effects and calls all your pure functions that do the real business logic.</p>
+
+<p>
+Systems build this way scale really well because there are less moving parts. Additionally pure functions can be easily tested and changed later on.
+</p>
+
+<p>
+Most other languages encourage you to do side effects in an unrestricted way. For example when working in Java, a call to an object method might indirectly change the state of many related objects. This means you cannot easily reason about what a method calls does. In Haskell most functions are pure and thus don''t trigger side effects like this. And when they do you can see this already by the function''s type signature.
+</p>
+
+<p>
+Haskell forces you to manage your side effects in a more careful way. You can still do IO and have mutable state, you just need to make this explicit inside the type signature. This leads to a far more robust system in overall.
+</p>
+
 <h2>Performance</h2>
 <p>
 Out of the box the performance of Haskell based web applications is great. It just feels faster than your typical Rails or PHP application. Thanks to it’s highly optimized runtime system it can also <a href="https://www.yesodweb.com/blog/2011/03/preliminary-warp-cross-language-benchmarks" target="_blank">handle way more requests than a nodejs application</a>.
