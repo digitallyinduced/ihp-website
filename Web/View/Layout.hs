@@ -1,4 +1,4 @@
-module Web.View.Layout (defaultLayout, Html) where
+module Web.View.Layout (defaultLayout, postLayout, Html) where
 
 import IHP.ViewPrelude
 import IHP.Environment
@@ -9,11 +9,18 @@ import Web.Types
 import Web.Routes
 import qualified IHP.FrameworkConfig as FrameworkConfig
 import Config ()
+import qualified Data.Text as Text
 
 type Html = HtmlWithContext ViewContext
 
 defaultLayout :: Html -> Html
-defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
+defaultLayout inner = layoutWithMeta metaTags inner
+
+postLayout :: Post -> Html -> Html
+postLayout post inner = layoutWithMeta (postMetaTags post) inner
+
+layoutWithMeta :: Html -> Html -> Html
+layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
 <head>
     {metaTags}
 
@@ -113,6 +120,27 @@ metaTags = [hsx|
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:description" content="IHP is a modern batteries-included Web Framework, built on top of Haskell and Nix." />
     <meta name="twitter:title" content="IHP: Integrated Haskell Platform" />
+    <meta name="twitter:site" content="@digitallyinduce" />
+    <meta property="og:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+    <meta property="og:image:secure_url" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+    <meta property="twitter:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
+    <meta property="og:image:width" content="1500" />
+    <meta property="og:image:height" content="1500" />
+|]
+
+postMetaTags post = [hsx|
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:locale" content="en_EN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={get #title post} />
+    <meta property="og:description" content={get #body post |> stripTags |> Text.take 240} />
+    <meta property="og:url" content="https://ihp.digitallyinduced.com/" />
+    <meta property="og:site_name" content="IHP: Integrated Haskell Platform" />
+    <meta name="author" content="digitally induced GmbH">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content={get #body post |> stripTags |> Text.take 240} />
+    <meta name="twitter:title" content={get #title post} />
     <meta name="twitter:site" content="@digitallyinduce" />
     <meta property="og:image" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
     <meta property="og:image:secure_url" content="https://ihp.digitallyinduced.com/Guide/images/first-project/code_gen_3_posts.png" />
