@@ -5,6 +5,9 @@ import Web.View.Posts.Index
 import Web.View.Posts.New
 import Web.View.Posts.Edit
 import Web.View.Posts.Show
+import Config
+import qualified IHP.FrameworkConfig as Config
+import qualified IHP.Environment as Config
 
 instance Controller PostsController where
     action PostsAction = do
@@ -14,7 +17,7 @@ instance Controller PostsController where
         render IndexView { .. }
 
     action NewPostAction = do
-        renderPlain "not yet implemented"
+        onlyInDevMode
 
         let post = newRecord
         render NewView { .. }
@@ -24,13 +27,13 @@ instance Controller PostsController where
         render ShowView { .. }
 
     action EditPostAction { postId } = do
-        renderPlain "not yet implemented"
+        onlyInDevMode
         
         post <- fetch postId
         render EditView { .. }
 
     action UpdatePostAction { postId } = do
-        renderPlain "not yet implemented"
+        onlyInDevMode
 
         post <- fetch postId
         post
@@ -43,7 +46,7 @@ instance Controller PostsController where
                     redirectTo EditPostAction { .. }
 
     action CreatePostAction = do
-        renderPlain "not yet implemented"
+        onlyInDevMode
 
         let post = newRecord @Post
         post
@@ -56,7 +59,7 @@ instance Controller PostsController where
                     redirectTo PostsAction
 
     action DeletePostAction { postId } = do
-        renderPlain "not yet implemented"
+        onlyInDevMode
 
         post <- fetch postId
         deleteRecord post
@@ -65,3 +68,6 @@ instance Controller PostsController where
 
 buildPost post = post
     |> fill @["title","body","isExternal"]
+
+onlyInDevMode :: _ => _
+onlyInDevMode = unless (Config.isDevelopment Config.environment) (renderPlain "Access denied")

@@ -11,10 +11,16 @@ body {
     height: 30px;
 }
 
-code, pre {
+pre {
     background-color: rgba(0, 43, 54, 0.11);
     color: #002b36;
     padding: 1rem;
+    border-radius: 3px;
+}
+
+code {
+    background-color: rgba(0, 43, 54, 0.11);
+    color: #002b36;
     border-radius: 3px;
 }
 

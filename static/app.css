@@ -9,3 +9,8 @@
 .quote-link img {
     width: 66%;
 }
+
+.post-body {
+    font-size: 1.125rem;
+    margin-bottom: 10rem;
+}

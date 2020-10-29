@@ -18,7 +18,7 @@ instance View EditView ViewContext where
 renderForm :: Post -> Html
 renderForm post = formFor post [hsx|
     {(textField #title)}
-    {(textField #body)}
-    {(textField #isExternal)}
+    {(textareaField #body)}
+    {(checkboxField #isExternal)}
     {submitButton}
 |]
