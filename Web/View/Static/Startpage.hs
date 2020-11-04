@@ -87,7 +87,7 @@ instance View StartpageView ViewContext where
                     <p>While haskell is a compiled language, the built-in dev server automatically reloads your code changes using the fastest way possible. Changes are reflected instantly. Just like good old PHP.</p>
 
                     <p>
-                        <img class="w-100" style="border-radius: 4px" src="https://github.com/digitallyinduced/ihp/raw/readme-update/Guide/images/IHP%20Live%20Reloading%20Demo.gif?raw=true"/>
+                        <img class="w-100" style="border-radius: 4px" src="https://github.com/digitallyinduced/ihp/raw/master/Guide/images/IHP%20Live%20Reloading%20Demo.gif?raw=true"/>
                     </p>
                 </li>
 
