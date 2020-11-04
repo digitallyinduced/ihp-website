@@ -12,6 +12,15 @@ instance View CommunityView ViewContext where
                 IHP has a very active and vibrant community.
             </p>
 
+            <h2>Slack</h2>
+
+            <p>
+                Join our Slack Community! Here you can find help with IHP related topics, or just discuss things about coding with like minded people.
+
+                <a href="https://join.slack.com/t/ihpframework/shared_invite/zt-im0do3yv-iryDNyvpwW~py40kvl_cpQ">Join the IHP Slack.</a>
+            </p>
+
+
             <h2>Gitter</h2>
 
             <p>
