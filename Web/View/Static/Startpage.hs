@@ -33,7 +33,7 @@ instance View StartpageView ViewContext where
     <p class="my-5">
         <a class="btn btn-primary btn-lg mr-3" href="/Guide/" role="button">Get Started with IHP Now</a>
 
-        or <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3">subscribe to the IHP newsletter</a>.
+        or <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3" onclick="twq('track', 'Signup')" target="_blank">subscribe to the IHP newsletter</a>.
     </p>
 
 
@@ -162,7 +162,7 @@ instance View StartpageView ViewContext where
         <p class="my-5">
             <a class="btn btn-primary btn-lg mr-3" href="/Guide/" role="button">Get Started with IHP Now</a>
 
-            or <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3">subscribe to the IHP newsletter</a>.
+            or <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3" onclick="twq('track', 'Signup')" target="_blank">subscribe to the IHP newsletter</a>.
         </p>
 
 
