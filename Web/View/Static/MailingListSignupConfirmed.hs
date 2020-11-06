@@ -23,5 +23,11 @@ instance View MailingListSignupConfirmedView ViewContext where
         <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=o4x0t&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
         </noscript>
         <!-- End Twitter single-event website tag code -->
+
+        <script>
+        !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','t2_5bziq6mz');rdt('track', 'PageVisit');
+        </script>
+
+        <script>rdt('track', 'SignUp')</script>
     |]
 
