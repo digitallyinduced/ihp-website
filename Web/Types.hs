@@ -20,6 +20,7 @@ data StaticController
     = StartpageAction
     | CommunityAction
     | QuotesAction
+    | MailingListSignupConfirmedAction
     deriving (Eq, Show, Data)
 
 data GuideController
