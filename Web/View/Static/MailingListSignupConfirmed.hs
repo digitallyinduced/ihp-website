@@ -3,7 +3,7 @@ import Web.View.Prelude
 
 data MailingListSignupConfirmedView = MailingListSignupConfirmedView
 
-instance View MailingListSignupConfirmedView ViewContext where
+instance View MailingListSignupConfirmedView where
     html MailingListSignupConfirmedView = [hsx|
         <div id="quotes">
             <h1>Thanks for signing up!</h1>

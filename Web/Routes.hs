@@ -7,7 +7,6 @@ import Web.Types
 instance AutoRoute StaticController
 
 instance AutoRoute PostsController
-type instance ModelControllerMap WebApplication Post = PostsController
 
 instance HasPath GuideController where
     pathTo GuideAction = "/Guide/index.html"

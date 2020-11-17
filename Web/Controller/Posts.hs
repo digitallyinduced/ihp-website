@@ -70,4 +70,4 @@ buildPost post = post
     |> fill @["title","body","isExternal"]
 
 onlyInDevMode :: _ => _
-onlyInDevMode = unless (Config.isDevelopment Config.environment) (renderPlain "Access denied")
+onlyInDevMode = unless isDevelopment (renderPlain "Access denied")

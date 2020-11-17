@@ -3,7 +3,7 @@ import Web.View.Prelude
 
 data StartpageView = StartpageView
 
-instance View StartpageView ViewContext where
+instance View StartpageView where
     html StartpageView = [hsx|
 <div id="startpage">
     <div class="mb-5">

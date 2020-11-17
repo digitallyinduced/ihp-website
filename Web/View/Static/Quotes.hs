@@ -3,7 +3,7 @@ import Web.View.Prelude
 
 data QuotesView = QuotesView
 
-instance View QuotesView ViewContext where
+instance View QuotesView where
     html QuotesView = [hsx|
         <div id="quotes">
             <h1>Quotes</h1>

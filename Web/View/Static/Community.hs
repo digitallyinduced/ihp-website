@@ -3,7 +3,7 @@ import Web.View.Prelude
 
 data CommunityView = CommunityView
 
-instance View CommunityView ViewContext where
+instance View CommunityView where
     html CommunityView = [hsx|
         <div id="community">
             <h1>Community</h1>
