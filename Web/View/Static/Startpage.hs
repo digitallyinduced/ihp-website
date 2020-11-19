@@ -40,7 +40,7 @@ instance View StartpageView where
     <div class="mb-5">
         <h5>IHP is right for you if:</h5>
         <ul>
-            <li>you belive software engineering should be fun</li>
+            <li>you believe software engineering should be fun</li>
             <li>you think the future is in type-safety and functional programming</li>
             <li>you want clear and beautiful documentation with lot's of code examples</li>
             <li>you want a vibrant and friendly community of other developers</li>
@@ -170,4 +170,3 @@ instance View StartpageView where
 
 </div>
     |]
-
