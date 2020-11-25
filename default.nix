@@ -1,7 +1,7 @@
 let
     ihp = builtins.fetchGit {
         url = "https://github.com/digitallyinduced/ihp.git";
-        rev = "2fb7446757d7d34097edb53ee3f0c70eb38d498f";
+        rev = "b7a5db20cf19e3e412d510c795c5e3569e68fa89";
     };
     haskellEnv = import "${ihp}/NixSupport/default.nix" {
         ihp = ihp;
