@@ -32,9 +32,13 @@ instance View StartpageView where
 
     <p class="my-5">
         <a class="btn btn-primary btn-lg mr-3" href="/Guide/" role="button">Get Started with IHP Now</a>
-
-        or <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3" target="_blank">subscribe to the IHP newsletter</a>.
     </p>
+
+    <hr/>
+
+    {mailchimpSignup}
+
+    <hr/>
 
 
     <div class="mb-5">
@@ -162,7 +166,7 @@ instance View StartpageView where
         <p class="my-5">
             <a class="btn btn-primary btn-lg mr-3" href="/Guide/" role="button">Get Started with IHP Now</a>
 
-            or <a href="https://digitallyinduced.us10.list-manage.com/subscribe?u=03763c34fa6aaa4c52edfe6ce&id=a09e22a2d3" target="_blank">subscribe to the IHP newsletter</a>.
+            {mailchimpSignup}
         </p>
 
 
@@ -170,3 +174,24 @@ instance View StartpageView where
 
 </div>
     |]
+
+
+mailchimpSignup :: Html
+mailchimpSignup = [hsx|
+<div class="py-5">
+    <h1 class="mb-4 text-center">Subscribe to the IHP Newsletter</h1>
+    <p class="text-center lead">Be the first to hear about great new stuff from us! 🔥</p>
+    <form action="https://digitallyinduced.us10.list-manage.com/subscribe/post?u=03763c34fa6aaa4c52edfe6ce&amp;id=a09e22a2d3" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <div class="d-flex mx-auto" style="max-width: 400px">
+            <input type="email" value="" name="EMAIL" class="form-control form-control-lg" id="mce-EMAIL" placeholder="Enter your email address" required autocomplete="email">
+
+
+            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_03763c34fa6aaa4c52edfe6ce_a09e22a2d3" tabindex="-1" value=""></div>
+            <div>
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary btn-lg">
+            </div>
+        </div>
+    </form>
+</div>
+|]
