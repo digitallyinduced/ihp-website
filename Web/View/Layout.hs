@@ -67,7 +67,7 @@ layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
             <a href="https://github.com/digitallyinduced/ihp">GitHub</a>
             <a href="/Guide/">Guide</a>
             <a href="/api-docs/">API</a>
-            <a href="https://ihp-forum.digitallyinduced.com/">Forum</a>
+            <a href="https://forum.ihpapp.com/">Forum</a>
             <a href="https://www.digitallyinduced.com/imprint.html">Imprint</a>
 
             <a href="https://www.digitallyinduced.com/">© 2020, digitally induced GmbH</a>

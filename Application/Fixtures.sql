@@ -23,7 +23,7 @@ INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('da4
 INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('b210c5d8-e36e-4a0b-a5b6-fd17fe16f2a5', '"Haskell Web Framework IHP Aims to Make Web Development Type-Safe and Easy" on InfoQ.com', 'https://www.infoq.com/news/2020/07/ihp-haskell-web-framework/', '2020-07-13 20:12:07.48603+02', true);
 INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('fe4fbb58-3534-4e78-b168-dee96e42fcc2', 'v07082020 released 🎉', '/releases/v07082020.html', '2020-08-07 20:17:15.052193+02', true);
 INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('bd52baa2-0141-4a74-b5b8-0fbbc0450e53', 'IHP Live Reloading: How it works', '/blog/2020-08-10-ihp-live-reloading.html', '2020-08-10 20:17:48.324949+02', true);
-INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('8c422b24-64cd-49dd-bfac-32b548db870b', 'v21082020 released', 'https://ihp-forum.digitallyinduced.com/ShowThread?threadId=2bb08d60-3e96-476f-9fdd-d48559fe8b39', '2020-08-21 20:18:23.115202+02', true);
+INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('8c422b24-64cd-49dd-bfac-32b548db870b', 'v21082020 released', 'https://forum.ihpapp.com/ShowThread?threadId=2bb08d60-3e96-476f-9fdd-d48559fe8b39', '2020-08-21 20:18:23.115202+02', true);
 INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('666a9659-0dae-4ad5-8bb8-7fc26906eb8c', 'v20200904 released', 'https://forum.ihpapp.com/ShowThread?threadId=53a7475e-e123-4f60-a363-fdde5071ed42', '2020-09-04 20:18:55.584307+02', true);
 INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('1abd13e8-9b09-4e4f-8189-950ab5b89ef5', 'v20200918 released', 'https://forum.ihpapp.com/ShowThread?threadId=33902f52-4fc9-4ec1-b007-cfaabd5b700d', '2020-09-18 20:19:49.046957+02', true);
 INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('975a77b7-9d76-4710-a061-c7a4303c8500', 'v20201002 released', 'https://forum.ihpapp.com/ShowThread?threadId=1c9021f7-11f5-48f4-aa23-a4ba915ba727', '2020-10-02 20:20:16.175029+02', true);
@@ -110,5 +110,3 @@ If this post made you interested, <a href="https://ihp.digitallyinduced.com/" ta
 
 
 ALTER TABLE public.posts ENABLE TRIGGER ALL;
-
-
