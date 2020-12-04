@@ -54,6 +54,7 @@ layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
                 <a class="nav-link" href="https://www.youtube.com/playlist?list=PLenFm8BWuKlS0IaE31DmKB_PbkMLmwWmG" target="_blank">YouTube</a>
                 <a class="nav-link" href="https://ihp.digitallyinduced.com/Guide/" target="_blank">Guide</a>
                 <a class="nav-link" href={CommunityAction}>Community</a>
+                <a class="nav-link" href="https://ihpcloud.com/" target="_blank">IHP Cloud</a>
             </div>
         </div>
     </nav>
