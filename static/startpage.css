@@ -38,3 +38,114 @@
     box-shadow: 0 1px 2px 0 rgb(7 54 66 / 0.2);
     border-radius: 12px;
 }
+
+.navigation-dropdown {
+    position: absolute;
+    background-color: #fff;
+    width: 600px;
+    box-shadow: 0 1px 2px 0 rgb(7 54 66 / 0.2);
+    top: 0px;
+    left: 0%;
+    right: 0%;
+    border-radius: 9px;
+    transform: matrix3d(1, 0, 0, 0, 0, 0.965926, -0.258819, 0, 0, 0.258819, 0.965926, 0, 0, 0, 0, 1);
+    transform-origin: 475px -50px;
+    visibility: hidden;
+    transition: all 0.3s;
+    opacity: 0;
+    font-size: 14px;
+}
+
+.navigation-dropdown > div {
+    display: none;
+}
+
+.navigation-dropdown > div.active {
+    display: block;
+}
+
+.navigation-dropdown-container.active .navigation-dropdown {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1);
+    visibility: visible;
+    opacity: 1;
+}
+
+.navigation-dropdown-container.will-leave .navigation-dropdown {
+    transform: matrix3d(1, 0, 0, 0, 0, 0.965926, -0.258819, 0, 0, 0.258819, 0.965926, 0, 0, 0, 0, 1);
+    opacity: 0;
+}
+
+.navigation-dropdown-container {
+    position: relative;
+    perspective: 2000px;
+}
+
+.navigation-dropdown h2 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: hsl(192 81% 14% / 0.5);
+    margin-bottom: 1rem;
+}
+
+.navigation-dropdown .product {
+    display: flex;
+    padding: 0.5rem;
+    text-decoration: none !important;
+    color: #073642;
+}
+
+.navigation-dropdown .product-icon {
+    width: 64px;
+    min-width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-dropdown .product-icon svg {
+    width: 50%;
+}
+
+.navigation-dropdown .product-name {
+    font-weight: 600;
+}
+.navigation-dropdown .product-description {
+    color: hsla(192, 81%, 26%, 0.65);
+}
+
+.navigation-dropdown .product:hover {
+    background-color: hsla(192, 81%, 26%, 1);
+    border-radius: 6px;
+    color: #fff;
+    transition: all 0.1s;
+}
+
+.navigation-dropdown .product:hover .product-description {
+    color: hsla(192, 81%, 90%, 1);
+    transition: all 0.1s;
+}
+
+#navigation-dropdown-develop .docu-more-links {
+    margin-left: 72px;
+    margin-top: 1.5rem;
+}
+
+#navigation-dropdown-develop .docu-more-links h3 {
+    font-size: 14px;
+    color: hsl(192 81% 14% / 0.5);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#navigation-dropdown-develop .docu-more-links a {
+    display: block;
+    color: hsla(192, 81%, 26%, 0.65);
+    margin-bottom: 0.25rem;
+}
+
+#navigation-dropdown-community .community {
+    display: inline-block;
+    margin-right: 1rem;
+}
