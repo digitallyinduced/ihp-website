@@ -107,6 +107,73 @@ For years there has been this trend of growing use of type safety as well as the
 <p>
 If this post made you interested, <a href="https://ihp.digitallyinduced.com/" target="_blank">check out IHP, our batteries-included haskell web framework.</a>
 </p>', '2020-10-29 14:34:15.131598+01', false);
+INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('03e5a442-8b81-4b80-a000-29a3e7f10adf', 'Improving Haskell (GHC) Error Messages', '<p><em>by Marc Scholten, 20.12.2020</em></p>
+<p>The quality of GHC''s error messages is making it harder for newcomers to adopt Haskell. A good error message should be clear, actionable, and practical. In this aspect GHC could be a lot more user-friendly.</p>
+
+<p>Here''s an example related to type-level-list syntax that often comes up in the IHP community:</p>
+
+<pre>
+action CreateUserAction = do
+        let user = newRecord @User
+        let password = param @Text "password"
+        user
+            |> set #passwordHash password
+            |> fill @["email"]
+            |> validateField #email isEmail
+            |> validateField #passwordHash nonEmpty
+            |> debug
+            |> ifValid \case
+            Left user ->
+                render NewView {..}
+            Right user -> do
+                hashed <- hashPassword (get #passwordHash user)
+                user
+                    |> set #passwordHash hashed
+                    |> createRecord
+
+                setSuccessMessage "You have successfully registered"
+</pre>
+
+<p>This code snippet errors with:</p>
+
+<pre>
+Web/Controller/Users.hs:16:23
+    * Expected a type, but `"email"'' has kind `Symbol''
+    * In the type `["email"]''
+      In the second argument of `(|>)'', namely `fill @["email"]''
+      In the first argument of `(|>)'', namely
+        `user |> set #passwordHash password |> fill @["email"]''
+   |
+16 |             |> fill @["email"]
+   |                       ^^^^^^^
+</pre>
+
+<p>Unless you know about the type-level-list syntax issue with <code>''</code> you will most likely get stuck.</p>
+
+<p>A better error message could offer a solution that will most likely help:</p>
+
+<pre>
+Web/Controller/Users.hs:16:23
+    * Type level lists with only a single element need a '' in front of the list. Prepend a '' like `''["email]'' to get it working.
+    * In the type `["email"]''
+      In the second argument of `(|>)'', namely `fill @["email"]''
+      In the first argument of `(|>)'', namely
+        `user |> set #passwordHash password |> fill @["email"]''
+   |
+16 |             |> fill @["email"]
+   |                       ^^^^^^^
+</pre>
+
+<p><a href="https://github.com/digitallyinduced/ihp/issues/587" target="_blank">We''ve collected a couple more real-world issues on GitHub with possible better alternatives.</a></p>
+
+<p><strong>I''d like to start a discussion in the larger haskell community on this so we can find a process on how we can improve this longterm.</strong> E.g. maybe we could have a central repository where haskell users could report bad and unclear error messages.
+</p>
+
+<p>There''s <a href="https://github.com/haskell/rfcs">haskell/rfcs</a> for new GHC features, so why don''t we have a repository like <code>haskell/ux</code> where we can collect ideas to improve existing features?</p>
+
+<p><em>Let me know what you think about this <a href="https://github.com/digitallyinduced/ihp/issues/587">on GitHub</a> or Reddit.</em></p>', '2020-12-20 15:25:17.909761+01', false);
 
 
 ALTER TABLE public.posts ENABLE TRIGGER ALL;
+
+
