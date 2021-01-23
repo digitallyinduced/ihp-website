@@ -11,3 +11,4 @@ instance Controller StaticController where
     action CommunityAction = render CommunityView
     action QuotesAction = render QuotesView
     action MailingListSignupConfirmedAction = render MailingListSignupConfirmedView
+    action SlackAction = redirectToUrl "https://join.slack.com/t/ihpframework/shared_invite/zt-kswhw782-NEzDDVJsAEkQK7UXCFfp4w"
