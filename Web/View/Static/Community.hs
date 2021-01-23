@@ -17,7 +17,7 @@ instance View CommunityView where
             <p>
                 Join our Slack Community! Here you can find help with IHP related topics, or just discuss things about coding with like minded people.
 
-                <a href="https://join.slack.com/t/ihpframework/shared_invite/zt-kswhw782-NEzDDVJsAEkQK7UXCFfp4w">Join the IHP Slack.</a>
+                <a href={SlackAction}>Join the IHP Slack.</a>
             </p>
 
 

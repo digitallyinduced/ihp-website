@@ -49,7 +49,7 @@ layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
                     <a class="github-button" href="https://github.com/digitallyinduced/ihp" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star digitallyinduced/ihp on GitHub">Star</a>
                 </span>
                 <a class="nav-link" href="https://github.com/digitallyinduced/ihp" target="_blank">GitHub</a>
-                <a class="nav-link" href="https://join.slack.com/t/ihpframework/shared_invite/zt-kswhw782-NEzDDVJsAEkQK7UXCFfp4w">Slack</a>
+                <a class="nav-link" href={SlackAction}>Slack</a>
                 <a class="nav-link" href="https://twitter.com/digitallyinduce" target="_blank">Twitter</a>
                 <a class="nav-link" href="https://www.youtube.com/playlist?list=PLenFm8BWuKlS0IaE31DmKB_PbkMLmwWmG" target="_blank">YouTube</a>
                 <a class="nav-link" href="https://ihp.digitallyinduced.com/Guide/" target="_blank">Guide</a>
