@@ -14,6 +14,14 @@ SET row_security = off;
 
 SET SESSION AUTHORIZATION DEFAULT;
 
+ALTER TABLE public.admins DISABLE TRIGGER ALL;
+
+INSERT INTO public.admins (id, email, password_hash, locked_at, failed_login_attempts) VALUES ('ae71ce9b-a340-48ca-b05b-dbc9db4404a2', 'marc@digitallyinduced.com', 'sha256|17|qKLkpd80ZWgY+TlQu68z9g==|T+godSI63qAVV6eUzcZvhR10rk/YW6m6JfWwxCmfY3o=', NULL, 0);
+
+
+ALTER TABLE public.admins ENABLE TRIGGER ALL;
+
+
 ALTER TABLE public.posts DISABLE TRIGGER ALL;
 
 INSERT INTO public.posts (id, title, body, created_at, is_external) VALUES ('876a211d-73bc-4052-a571-50676414edcc', 'IHP has been released to the public', '/release.html', '2020-06-23 20:01:16.599718+02', true);
