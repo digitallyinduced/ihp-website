@@ -7,6 +7,9 @@ instance View StartpageView where
     html StartpageView = [hsx|
 <div id="startpage">
     <div class="mb-5">
+        <p>
+            <img src="/ihp.svg" style="height: 4rem"/>
+        </p>
         <h1>The fastest way to build <br/> type safe web apps 🔥</h1>
         <p class="lead">
             IHP is a new batteries-included web framework optimized for longterm productivity and programmer happiness.

@@ -35,7 +35,7 @@ layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
 </head>
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="/">IHP <small class="text-muted">Integrated Haskell Platform</small></a>
+        <a class="navbar-brand" href="/"><img src="/ihp.svg" class="d-inline-block align-top" style="height: 2rem"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
