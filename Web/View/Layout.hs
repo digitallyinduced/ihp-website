@@ -41,7 +41,8 @@ layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href={PostsAction}>Blog</a>
+                <a class="nav-link" href={PostsAction}>News</a>
+                <a class="nav-link" href={PartnersAction}>Partners</a>
             </div>
             <div class="ml-auto navbar-nav">
 

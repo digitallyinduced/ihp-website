@@ -103,7 +103,7 @@ html, body {
     border-color: hsla(192, 81%, 26%, 1) !important;
 }
 
-a {
+a, .btn-link {
     color: hsla(192, 81%, 26%, 1);
 }
 
