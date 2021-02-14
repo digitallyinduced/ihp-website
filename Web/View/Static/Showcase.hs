@@ -28,7 +28,7 @@ instance View ShowcaseView where
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="project">
                     <img src="/showcase/attics.png" alt="attics.io"/>
                     <div class="description">
@@ -82,8 +82,12 @@ instance View ShowcaseView where
                         </p>
                     </div>
                 </div>
+            </div>
 
-
+            <div class="my-5 text-center">
+                <a href="https://github.com/digitallyinduced/ihp-website/blob/master/Web/View/Static/Showcase.hs">
+                    Your project is missing? Open a pull request to add it.
+                </a>
             </div>
         </div>
     |]
