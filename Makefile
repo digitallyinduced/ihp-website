@@ -9,6 +9,7 @@ include ${IHP}/Makefile.dist
 CSS_FILES += ${IHP}/static/vendor/bootstrap.min.css
 CSS_FILES += static/layout.css
 CSS_FILES += static/startpage.css
+CSS_FILES += static/showcase.css
 CSS_FILES += static/app.css
 
 JS_FILES += ${IHP}/static/vendor/jquery-3.2.1.slim.min.js
