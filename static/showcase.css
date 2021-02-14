@@ -1,0 +1,38 @@
+#showcase .showcase-project {
+    margin-right: 1rem;
+    font-size: 14px;
+}
+
+#showcase .showcase-project h2 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#showcase .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+#showcase .showcase-project img {
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+
+#showcase .project {
+    margin-bottom: 2rem;
+}
+
+#showcase .project img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+#showcase .project .description {
+    border-radius: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+}

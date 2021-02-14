@@ -1,4 +1,4 @@
-module Web.View.Layout (defaultLayout, postLayout, Html) where
+module Web.View.Layout (defaultLayout, fullWidthLayout, postLayout, Html) where
 
 import IHP.ViewPrelude
 import IHP.Environment
@@ -12,13 +12,17 @@ import Config ()
 import qualified Data.Text as Text
 
 defaultLayout :: Html -> Html
-defaultLayout inner = layoutWithMeta metaTags inner
+defaultLayout inner = layoutWithMeta "default-layout" metaTags inner
+
+-- | Same as defaultLayout but with a bigger container size
+fullWidthLayout :: Html -> Html
+fullWidthLayout inner = layoutWithMeta "fullwidth-layout" metaTags inner
 
 postLayout :: Post -> Html -> Html
-postLayout post inner = layoutWithMeta (postMetaTags post) inner
+postLayout post inner = layoutWithMeta "" (postMetaTags post) inner
 
-layoutWithMeta :: Html -> Html -> Html
-layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
+layoutWithMeta :: Text -> Html -> Html -> Html
+layoutWithMeta bodyClass metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
 <head>
     {metaTags}
 
@@ -33,7 +37,7 @@ layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
     !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','t2_5bziq6mz');rdt('track', 'PageVisit');
     </script>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class={classes ["d-flex flex-column min-vh-100", (bodyClass, True)]}>
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/"><img src="/ihp.svg" class="d-inline-block align-top" style="height: 2rem"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +47,7 @@ layoutWithMeta metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
             <div class="navbar-nav">
                 <a class="nav-link" href={PostsAction}>News</a>
                 <a class="nav-link" href={PartnersAction}>Partners</a>
+                <a class="nav-link" href={ShowcaseAction}>Showcase</a>
             </div>
             <div class="ml-auto navbar-nav">
 

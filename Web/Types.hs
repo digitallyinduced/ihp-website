@@ -16,6 +16,7 @@ data StaticController
     | MailingListSignupConfirmedAction
     | SlackAction
     | PartnersAction
+    | ShowcaseAction
     deriving (Eq, Show, Data)
 
 data GuideController

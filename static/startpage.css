@@ -38,3 +38,21 @@
     box-shadow: 0 1px 2px 0 rgb(7 54 66 / 0.2);
     border-radius: 12px;
 }
+
+
+.showcase-project {
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 1px 2px 0 rgb(7 54 66 / 0.2);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.showcase-project img {
+    width: 100%;
+}
+
+.showcase-project .description {
+    margin-left: 22px;
+    margin-right: 22px;
+}

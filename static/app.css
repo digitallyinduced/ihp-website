@@ -1,5 +1,6 @@
 @import "./layout.css";
 @import "./startpage.css";
+@import "./showcase.css";
 
 .quote-link {
     display: block;
@@ -13,4 +14,33 @@
 .post-body {
     font-size: 1.125rem;
     margin-bottom: 10rem;
+}
+
+.partner {
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 1px 2px 1px rgb(7 54 66 / 0.2);
+    border-radius: 6px;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    max-width: 420px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.partner > img {
+    width: 50%;
+    padding-bottom: 2rem;
+}
+
+.partner-badge {
+    height: 6rem;
+    border-radius: 8px;
+}
+
+.partner .description {
+    color: rgb(153, 159, 185);
 }
