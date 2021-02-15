@@ -19,4 +19,4 @@ instance Controller StaticController where
         -- This slack link expires every 30 days. To avoid updating 20 links everywhere we have this
         -- central endpoint at http://ihp.digitallyinduced.com/Slack that just redirects to the current
         -- active slack invite url.
-        redirectToUrl "https://join.slack.com/t/ihpframework/shared_invite/zt-kswhw782-NEzDDVJsAEkQK7UXCFfp4w"
+        redirectToUrl "https://join.slack.com/t/ihpframework/shared_invite/zt-mfek5t9g-ipfT1BrcJolOWB3ueDrqlA"
