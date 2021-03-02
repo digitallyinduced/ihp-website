@@ -38,6 +38,9 @@ layoutWithMeta bodyClass metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
     </script>
 </head>
 <body class={classes ["d-flex flex-column min-vh-100", (bodyClass, True)]}>
+    <a class="event-header d-block bg-primary py-2 text-center text-white" href="https://ihp-community-events.mailchimpsites.com/" target="_blank">
+        Join our first Global IHP Meetup, 17.03.2021 18:00 CET 🚀
+    </a>
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/"><img src="/ihp.svg" class="d-inline-block align-top" style="height: 2rem"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +51,7 @@ layoutWithMeta bodyClass metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
                 <a class="nav-link" href={PostsAction}>News</a>
                 <a class="nav-link" href={PartnersAction}>Partners</a>
                 <a class="nav-link" href={ShowcaseAction}>Showcase</a>
+                <a class="nav-link" href="https://ihp-community-events.mailchimpsites.com/" target="_blank">Events</a>
             </div>
             <div class="ml-auto navbar-nav">
 
@@ -77,7 +81,7 @@ layoutWithMeta bodyClass metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
             <a href="https://forum.ihpapp.com/">Forum</a>
             <a href="https://www.digitallyinduced.com/imprint.html">Imprint</a>
 
-            <a href="https://www.digitallyinduced.com/">© 2020, digitally induced GmbH</a>
+            <a href="https://www.digitallyinduced.com/">© 2021, digitally induced GmbH</a>
         </div>
 
         <div class="container" id="footer-about">
