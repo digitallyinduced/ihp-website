@@ -38,7 +38,7 @@ layoutWithMeta bodyClass metaTags inner = H.docTypeHtml ! A.lang "en" $ [hsx|
     </script>
 </head>
 <body class={classes ["d-flex flex-column min-vh-100", (bodyClass, True)]}>
-    <a class="event-header d-block bg-primary py-2 text-center text-white" href="https://ihp-community-events.mailchimpsites.com/" target="_blank">
+    <a class="d-block bg-primary event-header py-2 text-center text-white" href="https://ihp-community-events.mailchimpsites.com/" target="_blank">
         Join our first Global IHP Meetup, 17.03.2021 18:00 CET 🚀
     </a>
     <nav class="navbar navbar-expand-lg navbar-light">
