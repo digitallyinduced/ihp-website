@@ -180,6 +180,131 @@ Web/Controller/Users.hs:16:23
 <p>There''s <a href="https://github.com/haskell/rfcs">haskell/rfcs</a> for new GHC features, so why don''t we have a repository like <code>haskell/ux</code> where we can collect ideas to improve existing features?</p>
 
 <p><em>Let me know what you think about this <a href="https://github.com/digitallyinduced/ihp/issues/587">on GitHub</a> or Reddit.</em></p>', '2020-12-20 15:25:17.909761+01', false);
+INSERT INTO public.posts (id, title, body, created_at, is_external, is_community) VALUES ('d547f0f6-c335-4f59-aadb-e5cea7393492', 'Why you should use IHP instead of express',
+  '
+<p><em>by Jannis Jorre, 03.03.2021</em></p>
+
+<p>
+express is one of the most popular options for writing webapps these days. IHP on the other hand is the fastest growing Haskell web framework.
+</p>
+
+<p>
+If you''ve been using express, this article is supposed to give you an intro into all of the good stuff you might be missing out on.
+</p>
+
+<h2>Live Reloading</h2>
+<p>
+express and related tooling are notoriously known for the fact that to start any project, one will first have to do a lot of configuring to get nice developer tooling set up, but also to get everything running at all.
+</p>
+
+<p>
+IHP works on a different ideology: at digitally induced, we aim to make software engineering feel magical again. As such, configuration is turned down to a minimum, while providing the best developer tools out-of-the-box.
+</p>
+
+<p>
+One such tool is live reloading. While you can get some form of automatic server restarts on file save set up with express, it''ll take a while to configure everything properly. And in the end, states will likely not be preserved. Additionally, and webpage that''s been opened that requires reloading will have to be reloaded by hand (unless you want to spend multiple hours with configuration again).
+</p>
+
+<p>
+When using IHP, all of that is done for you. Whatever you change - whether that''s frontend code, or backend code - it''ll only require you to save the file for you to see the result in your browser, as the included developer tools reload everything for you. Even better, the website doesn''t even have to do a full reload - instead, only the parts of the page are updated that actually need updating.
+</p>
+
+<h2>Websockets and Auto Refresh</h2>
+<p>
+So live reload is great for developing, but there''s a similar situation in production apps too: if the data on the server changes, we might want to update what''s shown in an already opened website. When using express, you''ll have to do some ajax to get that to work.
+</p>
+
+<p>
+With IHP, all the necessary tools are included to set up a websocket connection to the client very easily. If you happened to build a webapp using express instead, you''ll have to pick up a second library for that, and coordinate between the two.
+</p>
+
+<p>
+However, since most websocket connections are used for the same thing (updating what the client sees based on changing information from the server), IHP makes it even simpler for developers: it''s got auto refresh.
+</p>
+
+<p>
+By simply setting an action (the equivalent of a route) to have auto refresh enabled, any changes will be pushed to all open clients via a websocket connection whenever the database has updated data for the relevant page.
+</p>
+
+<p>
+It''ll literately require you to do nothing more than type <code>autoRefresh</code> before the code of the route. That''s 11 letters. And you''re done.
+</p>
+
+<h2>Code generators</h2>
+<p>
+Speaking of saving keystrokes: in projects there tends to be some amount of boilerplate. And that''s really annoying to type. With IHP, typing boilerplate is a thing of the past. Code generators allow you to generate everything that''s not specific to your implementation, which means it takes seconds to get set up for new features.
+</p>
+
+<p>
+If you use the web ui instead of the CLI to do the code generation, you even get nice syntax-highlighted previews of what will be generated, so you can make sure everything works as expected. But honestly, I''ve never had a case where it didn''t do what I wanted it to.
+</p>
+
+<h2>Functional Programming</h2>
+<p>
+JavaScript is seeing a big move towards the paradigm of functional programming. Routes are simply functions in express, React is is defaulting to function components, and functions like <code>filter</code>, <code>map</code> and <code>reduce</code> are all becoming more and more popular.
+</p>
+
+<p>
+Since IHP uses Haskell - a purely functional programming language - you get all of that goodness too. Only better, because it''s the whole concept of Haskell.
+</p>
+
+<p>
+Being purely functional has other advantages than just being trending though. Pure functions do not have side effects. When something does go wrong, it''s really easy to find out where to look for the error, because there''s only a handful of places the bug could hide. While in express it could be nearly everywhere. The reason for this is that reasoning about the things a function does by just looking at its type signature is really easy. Speaking of which...
+</p>
+
+<h2>Type-safety</h2>
+<p>
+JavaScript is a weakly and dynamically typed language. Haskell on the other hand is strongly and statically typed. That means that while JavaScript allows you to use any variable everywhere (even one that hasn''t even been created before), Haskell will make sure that whatever variable is being used, makes sense at that place.
+</p>
+
+<p>
+Lots of people will say that dynamic and weak typing have advantages, and that''s certainly true - there''s definitely situations in which it is advantageous. But in most cases, there''s only a limited subset of values that make sense, and that''s where strong, static typing will prevent a whole host of bugs. Just look at the popularity of typescript, which attempts to bring strong, static typing to JavaScript. Since it''s tacked-on it isn''t as expressive as Haskell''s type system, which has been developed for years and years already.
+</p>
+
+<p>
+If you''re a Javascript developer and find writing typescript code annoying, I fully understand you. While typescript is great in its idea to bring strong, static typing to the web, it is lacking good type inference. That means that most people will have to write long, complicated type definitions by hand. In most cases Haskell will infer the type for you, meaning you get all the benefits, without the costs.
+</p>
+
+<p>
+The result is a language that will show you lots of bugs before you even run your code. You see lots of people saying they''d rather have code not compile for hours, instead of compiling and having to hunt down unnoticed bugs for days. And that''s exactly what Haskell can do for you. Just try it, and you''ll learn to love the compiler.
+</p>
+
+<h2>Faster performance thanks to Haskell green-threads</h2>
+<p>
+Speaking of compiling. It''s well-known that compiled languages tend to be faster than interpreted languages. That is another reason to use IHP, as Haskell will make your web app faster without you having to do anything, just because you use Haskell. Since express is running on Javascript, which is an interpreted language, it''s very hard to get a get performance.
+</p>
+
+<p>
+To increase performance, multithreading is a useful tool that allows a developer to get big bang for your buck. That is, if you''re able to use it. Which you won''t be if you use express, since Javascript is a single-threaded language.
+</p>
+
+<p>
+Sure, there''s async-await and promises, but everything still stays in one thread. Which makes reasoning about your program easy, but it doesn''t allow you to get as performant as you otherwise could be.
+</p>
+
+<p>
+When using Haskell, you have it much easier. Multithreading is already done for you. You won''t have to reason about race conditions and all those complicated situations that could arise by using async-await. Instead, the Haskell compiler is smart enough to multi-thread the parts of your application using something called green threads, without you having to do anything - and you will not run into any reasoning issues because of it. It basically is a free performance boost!
+</p>
+
+<h2>Deployment</h2>
+<p>
+Due to its popularity, deploying express applications has never been easier. At digitally induced we understand that, which is why we''ve built <a href="https://ihpcloud.com/">ihp-cloud</a>. It''s as simple as creating a git repository and telling us where to find it, and your repository can be deployed.
+</p>
+
+<h2>Community</h2>
+<p>
+No doubt, express has a great community and lots of documentation. IHP''s community is quickly growing too, however, and you''ll always find help in our community slack at <a href="https://ihp.digitallyinduced.com/Slack">https://ihp.digitallyinduced.com/Slack</a>, where we from digitally induced (the company behind IHP) will do everything to assist you in getting started with IHP and Haskell.
+</p>
+
+<p>
+If you want to learn first-hand what the community of IHP is doing, feel free to join the first global IHP Meetup on March 17th, 2021 at 18:00 CET: <a href="https://ihp-community-events.mailchimpsites.com/">Join IHP Global Meeting</a>. We hope to see you there!
+</p>
+
+<h2>Conclusion</h2>
+<p>
+If <code>undefined</code> errors, configuration messes, hours of hunting bugs annoy you as much as it annoys us, now''s the perfect time to try out IHP. Follow the <a href="https://ihp.digitallyinduced.com/Guide/index.html">Guide</a> to get set up and set up, build, and deploy your first web app in minutes - then tell us what you liked and where we can improve even further. We hope to see you on March 17th!
+</p>
+', '2021-03-03 10:52:09.725947+01', false, false);
 
 
 ALTER TABLE public.posts ENABLE TRIGGER ALL;
