@@ -24,7 +24,21 @@ instance View PartnersView where
             and Haskell projects, the digitally induced Partner Network can help you everywhere in the world.
         </p>
 
-        <hr />
 
-        <div class="text-muted">Here you will soon find the first digitally induced partners</div>
+        <h2 class="mb-4 mt-5">Platinum Partners</h2>
+
+        <div class="partner">
+            <img src="/partners/systor-vest-logo.png" alt="Systor Vest"/>
+            <p class="description">
+                With over 20 years of experience in developing specialised software applications Systor Vest has
+                extensive knowledge in top-notch web applications.
+
+                Developers of Systor Vest are active contributors to IHP and have extensive experience with IHP applications in production.
+            </p>
+
+
+            <p>
+                <img src="/partners/platinum.svg" class="partner-badge">
+            </p>
+        </div>
     |]
