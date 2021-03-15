@@ -34,6 +34,7 @@
 .partner > img {
     width: 50%;
     padding-bottom: 2rem;
+    max-height: 200px;
 }
 
 .partner-badge {

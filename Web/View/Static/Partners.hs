@@ -41,4 +41,23 @@ instance View PartnersView where
                 <img src="/partners/platinum.svg" class="partner-badge">
             </p>
         </div>
+
+        <div class="partner">
+            <img src="/partners/comhlan.svg" alt="Comhlan"/>
+            <p class="description">
+                Based in Limerick City, Ireland
+                Comhlan is a young company focused on the design of quality software.
+                The name Comhlan comes from the Irish word for complete:
+                chosen because, at the end of a project,
+                our clients will have the tools they need to do their job.
+                IHP is the primary tool Comhlan reaches for to make this happen.
+                Comhlan is an active contributor to the IHP framework
+                and deploys IHP applications in production.
+            </p>
+
+
+            <p>
+                <img src="/partners/platinum.svg" class="partner-badge">
+            </p>
+        </div>
     |]
