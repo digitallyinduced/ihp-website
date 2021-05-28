@@ -82,6 +82,19 @@ instance View ShowcaseView where
                         </p>
                     </div>
                 </div>
+
+                <div class="project">
+                    <img src="/showcase/gradement.png" alt="Gradement"/>
+                    <div class="description">
+                        <h2 class="name">Gradement</h2>
+                        <p>
+                            Gradement helps the stock investor by reducing all the complexities of financial accounting to a series of normalized and easy-to-use scores covering the most important aspects of every company from an investor's point of view.
+                        </p>
+                        <p>
+                            <a href="https://gradement.com/" target="_blank">Open Gradement</a>
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="my-5 text-center">
