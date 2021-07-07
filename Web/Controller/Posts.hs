@@ -16,4 +16,5 @@ instance Controller PostsController where
     
     action ShowPostAction { postId } = do
         post <- fetch postId
+        setTitle (get #title post)
         render ShowView { .. }

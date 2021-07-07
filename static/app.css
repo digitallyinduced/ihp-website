@@ -50,3 +50,19 @@
     background: linear-gradient(90deg, hsl(192 82% 25% / 1) 7%, hsl(192 80% 39% / 1) 53%, hsl(192 82% 24% / 1) 100%) !important;
     font-size: 16px;
 }
+
+#post {
+    max-width: 800px;
+}
+
+#post p {
+    line-height: 32px;
+}
+
+#post h1 {
+    font-weight: 800;
+}
+
+#post h2 {
+    font-weight: bold;
+}
