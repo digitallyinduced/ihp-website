@@ -16,7 +16,7 @@ instance View ShowView where
 
 
             <div class="text-center mb-5">
-                <a href="/Guide/" class="btn btn-primary btn-lg">Get Started with IHP Today!</a>
+                <a href="/" class="btn btn-primary btn-lg">Get Started with IHP Today!</a>
             </div>
         </div>
     |]
